@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="si">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,151 +7,300 @@
 <title>H.A.H.C. OBA | O/L Seminar Programme</title>
 
 <style>
-:root{
-    --maroon:#5b0714;
-    --maroon-dark:#35030b;
-    --gold:#f4c542;
-    --yellow:#ffd84d;
-    --green:#0c7a43;
-    --green-light:#18a65d;
-    --white:#ffffff;
-    --glass:rgba(255,255,255,.12);
-    --border:rgba(255,255,255,.22);
-    --shadow:0 15px 40px rgba(0,0,0,.25);
-}
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
+}
+
+html{
     scroll-behavior:smooth;
 }
 
 body{
-    font-family:Georgia, "Times New Roman", serif;
+    font-family:Georgia,serif;
+    color:#fff;
     background:
-        radial-gradient(circle at top left, rgba(255,216,77,.18), transparent 30%),
-        radial-gradient(circle at bottom right, rgba(12,122,67,.22), transparent 30%),
-        linear-gradient(135deg,var(--maroon-dark),var(--maroon),#720d1d);
-    color:var(--white);
-    min-height:100vh;
+        linear-gradient(135deg,
+        #3b0018 0%,
+        #650021 25%,
+        #8b5a00 55%,
+        #174d2b 80%,
+        #071f12 100%);
+    background-attachment:fixed;
     overflow-x:hidden;
 }
 
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    background:
-        linear-gradient(120deg,rgba(255,255,255,.03),transparent 40%),
-        linear-gradient(300deg,rgba(255,216,77,.04),transparent 40%);
-    z-index:-1;
-}
-
-/* HEADER */
+/* ================= HEADER ================= */
 
 header{
     position:sticky;
     top:0;
-    z-index:1000;
-    backdrop-filter:blur(18px);
-    background:rgba(53,3,11,.82);
-    border-bottom:1px solid rgba(255,255,255,.12);
-    box-shadow:0 8px 30px rgba(0,0,0,.25);
+    z-index:9999;
+    padding:7px 14px;
+    background:
+        linear-gradient(135deg,
+        rgba(60,0,25,.97),
+        rgba(100,0,35,.95),
+        rgba(25,70,35,.95));
+    backdrop-filter:blur(20px);
+    border-bottom:1px solid rgba(255,215,100,.35);
+    box-shadow:0 6px 25px rgba(0,0,0,.35);
 }
 
 .header-inner{
-    max-width:1200px;
-    margin:auto;
-    padding:14px 20px;
+    position:relative;
+    height:62px;
     display:flex;
     align-items:center;
-    justify-content:space-between;
-    gap:20px;
+    justify-content:center;
 }
 
 .brand{
+    position:absolute;
+    left:0;
+    top:50%;
+    transform:translateY(-50%);
     display:flex;
     align-items:center;
-    gap:12px;
-    min-width:0;
+    text-decoration:none;
+    z-index:5;
 }
 
 .brand-logo{
-    width:58px;
-    height:58px;
+    width:68px;
+    height:68px;
     object-fit:contain;
-    border-radius:50%;
-    filter:drop-shadow(0 5px 12px rgba(0,0,0,.4));
+    filter:
+        drop-shadow(0 0 8px rgba(255,215,80,.6))
+        drop-shadow(0 0 18px rgba(255,215,80,.25));
 }
 
 .brand-title{
-    font-size:clamp(1.35rem,3vw,2rem);
-    font-weight:700;
-    letter-spacing:1px;
-    color:var(--gold);
-    text-shadow:0 2px 10px rgba(244,197,66,.25);
+    text-align:center;
+    line-height:1;
     white-space:nowrap;
 }
 
-/* LANGUAGE */
+.brand-title h1{
+    font-size:clamp(21px,4vw,32px);
+    color:#ffd86b;
+    letter-spacing:1.5px;
+    text-shadow:
+        0 0 10px rgba(255,215,100,.45),
+        0 3px 8px rgba(0,0,0,.4);
+}
 
-.language-box{
+.brand-title span{
+    display:block;
+    margin-top:4px;
+    font-size:9px;
+    letter-spacing:2px;
+    color:#fff;
+    opacity:.8;
+}
+
+/* ================= MENU BUTTON ================= */
+
+.menu-button{
+    position:absolute;
+    right:0;
+    top:50%;
+    transform:translateY(-50%);
+    width:44px;
+    height:44px;
+    border-radius:14px;
+    border:1px solid rgba(255,215,100,.35);
+    background:rgba(255,255,255,.08);
+    color:#ffd86b;
     display:flex;
     align-items:center;
-    gap:7px;
-    background:rgba(255,255,255,.08);
-    border:1px solid var(--border);
-    padding:6px;
-    border-radius:30px;
-}
-
-.language-box button{
-    border:0;
-    background:transparent;
-    color:white;
-    padding:7px 11px;
-    border-radius:20px;
+    justify-content:center;
     cursor:pointer;
-    font-family:inherit;
-    transition:.3s;
+    font-size:24px;
+    transition:.3s ease;
+    z-index:10001;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
 }
 
-.language-box button:hover,
-.language-box button.active{
-    background:linear-gradient(135deg,var(--gold),var(--yellow));
-    color:var(--maroon-dark);
-    box-shadow:0 4px 15px rgba(244,197,66,.3);
+.menu-button:hover{
+    background:rgba(255,215,100,.18);
+    transform:translateY(-50%) scale(1.05);
 }
 
-/* NAV */
+.menu-button.active{
+    background:linear-gradient(135deg,#ffd76b,#b47a00);
+    color:#3b0018;
+}
 
-nav{
-    max-width:1200px;
-    margin:auto;
-    padding:0 20px 12px;
+/* ================= MENU OVERLAY ================= */
+
+.menu-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.48);
+    backdrop-filter:blur(4px);
+    opacity:0;
+    visibility:hidden;
+    transition:.35s ease;
+    z-index:9998;
+}
+
+.menu-overlay.show{
+    opacity:1;
+    visibility:visible;
+}
+
+/* ================= SIDE MENU ================= */
+
+.side-menu{
+    position:fixed;
+    top:0;
+    right:0;
+    width:min(340px,88vw);
+    height:100vh;
+    padding:85px 20px 25px;
+    background:
+        linear-gradient(
+            160deg,
+            rgba(59,0,24,.98),
+            rgba(101,0,33,.97),
+            rgba(23,77,43,.98)
+        );
+    backdrop-filter:blur(25px);
+    border-left:1px solid rgba(255,215,100,.3);
+    box-shadow:-15px 0 45px rgba(0,0,0,.4);
+    transform:translateX(105%);
+    transition:transform .4s cubic-bezier(.77,0,.18,1);
+    overflow-y:auto;
+    z-index:10000;
+}
+
+.side-menu.show{
+    transform:translateX(0);
+}
+
+.menu-header{
+    text-align:center;
+    margin-bottom:25px;
+    padding-bottom:18px;
+    border-bottom:1px solid rgba(255,215,100,.18);
+}
+
+.menu-header h2{
+    color:#ffd86b;
+    font-size:25px;
+    letter-spacing:1px;
+}
+
+.menu-header p{
+    font-size:10px;
+    opacity:.65;
+    margin-top:5px;
+    letter-spacing:1px;
+}
+
+.menu-links{
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+}
+
+.menu-links a{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    color:#fff;
+    text-decoration:none;
+    padding:14px 16px;
+    border-radius:16px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.08);
+    font-size:15px;
+    transition:.3s ease;
+}
+
+.menu-links a span{
+    width:28px;
+    text-align:center;
+    font-size:19px;
+}
+
+.menu-links a:hover{
+    transform:translateX(-4px);
+    background:rgba(255,215,100,.14);
+    border-color:rgba(255,215,100,.35);
+    color:#ffd86b;
+}
+
+.menu-language{
+    margin-top:25px;
+    padding-top:20px;
+    border-top:1px solid rgba(255,215,100,.18);
+}
+
+.menu-language-title{
+    text-align:center;
+    font-size:11px;
+    opacity:.65;
+    margin-bottom:12px;
+    letter-spacing:1px;
+}
+
+.language-switcher{
     display:flex;
     justify-content:center;
-    gap:10px;
-    flex-wrap:wrap;
+    gap:8px;
 }
 
-nav a{
-    color:white;
-    text-decoration:none;
-    font-size:.95rem;
-    padding:8px 13px;
-    border-radius:20px;
-    transition:.3s;
+.language-switcher button{
+    border:1px solid rgba(255,215,100,.35);
+    background:rgba(255,255,255,.08);
+    color:#fff;
+    padding:9px 13px;
+    border-radius:12px;
+    cursor:pointer;
+    font-family:Georgia,serif;
+    font-size:11px;
+    transition:.3s ease;
 }
 
-nav a:hover{
-    background:rgba(255,255,255,.12);
-    color:var(--gold);
+.language-switcher button:hover,
+.language-switcher button.active{
+    background:linear-gradient(135deg,#ffd76b,#b47a00);
+    color:#3d0019;
+    box-shadow:0 0 12px rgba(255,215,100,.35);
 }
 
-/* HERO */
+/* ================= COMMON ================= */
+
+section{
+    width:min(1150px,92%);
+    margin:auto;
+    padding:75px 0;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:15px;
+}
+
+.section-title h2{
+    font-size:clamp(28px,5vw,42px);
+    color:#ffd86b;
+    text-shadow:0 0 15px rgba(255,215,100,.3);
+}
+
+.section-title p{
+    max-width:750px;
+    margin:12px auto 0;
+    line-height:1.7;
+    opacity:.82;
+    font-size:14px;
+}
+
+/* ================= HERO ================= */
 
 .hero{
     min-height:78vh;
@@ -159,192 +308,176 @@ nav a:hover{
     align-items:center;
     justify-content:center;
     text-align:center;
-    padding:70px 20px;
     position:relative;
 }
 
+.hero::before{
+    content:"";
+    position:absolute;
+    width:350px;
+    height:350px;
+    background:rgba(255,210,80,.13);
+    filter:blur(100px);
+    border-radius:50%;
+    top:15%;
+    left:50%;
+    transform:translateX(-50%);
+}
+
 .hero-content{
-    max-width:950px;
+    position:relative;
+    z-index:2;
 }
 
 .hero-kicker{
     display:inline-block;
-    padding:8px 18px;
+    padding:8px 16px;
+    border:1px solid rgba(255,215,100,.35);
     border-radius:30px;
-    background:rgba(255,255,255,.09);
-    border:1px solid rgba(255,255,255,.2);
-    color:var(--gold);
+    background:rgba(255,255,255,.06);
+    color:#ffd86b;
+    font-size:12px;
+    letter-spacing:2px;
     margin-bottom:20px;
-    font-size:.9rem;
-    letter-spacing:1px;
 }
 
-.hero h1{
-    font-size:clamp(2.5rem,8vw,5.7rem);
-    line-height:1;
-    margin-bottom:25px;
-    text-shadow:0 8px 35px rgba(0,0,0,.4);
+.hero h2{
+    font-size:clamp(36px,8vw,72px);
+    line-height:1.05;
+    color:#fff;
+    text-shadow:
+        0 0 20px rgba(255,215,100,.25),
+        0 5px 15px rgba(0,0,0,.45);
 }
 
-.hero h1 span{
-    color:var(--gold);
+.hero h2 span{
+    color:#ffd86b;
 }
 
 .hero p{
     max-width:750px;
-    margin:0 auto 30px;
-    font-size:clamp(1rem,2.3vw,1.25rem);
+    margin:25px auto;
     line-height:1.8;
-    opacity:.9;
+    opacity:.86;
 }
 
-.hero-button{
+.hero-btn{
     display:inline-block;
     text-decoration:none;
-    color:var(--maroon-dark);
-    background:linear-gradient(135deg,var(--gold),var(--yellow));
-    padding:13px 27px;
+    padding:13px 24px;
     border-radius:30px;
+    color:#3b0018;
+    background:linear-gradient(135deg,#ffe28b,#c58b12);
     font-weight:bold;
-    box-shadow:0 10px 25px rgba(0,0,0,.25);
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.3),
+        0 0 20px rgba(255,215,100,.15);
     transition:.3s;
 }
 
-.hero-button:hover{
-    transform:translateY(-4px);
-    box-shadow:0 15px 35px rgba(0,0,0,.35);
+.hero-btn:hover{
+    transform:translateY(-4px) scale(1.02);
 }
 
-/* STATS */
+/* ================= STATS ================= */
 
 .stats{
-    max-width:900px;
-    margin:0 auto;
-    padding:0 20px 50px;
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:18px;
+    gap:15px;
+    margin-top:40px;
 }
 
 .stat{
-    background:var(--glass);
-    border:1px solid var(--border);
-    border-radius:20px;
-    padding:25px 15px;
+    padding:22px;
     text-align:center;
-    backdrop-filter:blur(14px);
-    box-shadow:var(--shadow);
+    border-radius:22px;
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,215,100,.18);
+    backdrop-filter:blur(12px);
+    box-shadow:0 10px 30px rgba(0,0,0,.18);
 }
 
 .stat strong{
     display:block;
-    color:var(--gold);
-    font-size:2.2rem;
-    margin-bottom:6px;
+    font-size:35px;
+    color:#ffd86b;
 }
 
 .stat span{
-    opacity:.9;
+    font-size:13px;
+    opacity:.8;
 }
 
-/* SECTIONS */
+/* ================= GLASS CARDS ================= */
 
-section{
-    max-width:1200px;
-    margin:auto;
-    padding:85px 20px;
+.glass{
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,215,100,.18);
+    border-radius:25px;
+    padding:30px;
+    backdrop-filter:blur(14px);
+    box-shadow:0 15px 40px rgba(0,0,0,.2);
 }
 
-.section-heading{
-    text-align:center;
-    margin-bottom:45px;
-}
+/* ================= FEATURES ================= */
 
-.section-heading h2{
-    font-size:clamp(2rem,5vw,3.2rem);
-    color:var(--gold);
-    margin-bottom:12px;
-}
-
-.section-heading p{
-    max-width:700px;
-    margin:auto;
-    line-height:1.7;
-    opacity:.85;
-}
-
-/* ABOUT */
-
-.about-box{
-    background:var(--glass);
-    border:1px solid var(--border);
-    border-radius:28px;
-    padding:40px;
-    backdrop-filter:blur(18px);
-    box-shadow:var(--shadow);
-    line-height:1.9;
-}
-
-.about-box h3{
-    color:var(--yellow);
-    margin-bottom:15px;
-    font-size:1.5rem;
-}
-
-/* FEATURES */
-
-.features-grid{
+.feature-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:22px;
+    gap:18px;
+    margin-top:35px;
 }
 
 .feature-card{
-    padding:30px 24px;
-    border-radius:25px;
-    background:var(--glass);
-    border:1px solid var(--border);
-    backdrop-filter:blur(15px);
-    box-shadow:var(--shadow);
+    padding:28px;
+    border-radius:24px;
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.1);
     transition:.35s;
 }
 
 .feature-card:hover{
-    transform:translateY(-8px);
-    border-color:rgba(244,197,66,.5);
+    transform:translateY(-7px);
+    border-color:rgba(255,215,100,.4);
+    box-shadow:0 15px 35px rgba(0,0,0,.25);
 }
 
 .feature-icon{
-    font-size:2.4rem;
+    font-size:35px;
     margin-bottom:15px;
 }
 
 .feature-card h3{
-    color:var(--gold);
+    color:#ffd86b;
     margin-bottom:10px;
 }
 
 .feature-card p{
+    font-size:13px;
     line-height:1.7;
-    opacity:.86;
+    opacity:.78;
 }
 
-/* TEACHERS */
+/* ================= TEACHERS ================= */
+
+.teacher-section{
+    margin-top:35px;
+}
 
 .medium-title{
     text-align:center;
-    margin:20px 0 25px;
-    color:var(--gold);
-    font-size:1.8rem;
+    color:#ffd86b;
+    font-size:25px;
+    margin-bottom:8px;
 }
 
-.medium-description{
+.medium-desc{
     text-align:center;
-    margin:-10px auto 25px;
-    opacity:.8;
+    opacity:.7;
+    font-size:13px;
+    margin-bottom:25px;
 }
-
-/* TEACHER CAROUSEL */
 
 .teacher-carousel{
     position:relative;
@@ -352,11 +485,11 @@ section{
 
 .teacher-track{
     display:flex;
-    gap:22px;
+    gap:18px;
     overflow-x:auto;
     scroll-snap-type:x mandatory;
+    padding:15px 8px 25px;
     scrollbar-width:none;
-    padding:25px 5px 35px;
 }
 
 .teacher-track::-webkit-scrollbar{
@@ -364,204 +497,323 @@ section{
 }
 
 .teacher-card{
-    flex:0 0 min(330px,82vw);
+    min-width:270px;
     scroll-snap-align:center;
-    background:var(--glass);
-    border:1px solid var(--border);
-    border-radius:28px;
-    padding:25px;
-    backdrop-filter:blur(16px);
-    box-shadow:var(--shadow);
+    padding:22px;
     text-align:center;
+    border-radius:25px;
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,215,100,.16);
+    backdrop-filter:blur(12px);
     transition:.4s;
-    position:relative;
-    overflow:hidden;
-}
-
-.teacher-card::before{
-    content:"";
-    position:absolute;
-    width:170px;
-    height:170px;
-    border-radius:50%;
-    background:rgba(244,197,66,.12);
-    filter:blur(20px);
-    top:-80px;
-    right:-70px;
 }
 
 .teacher-card.is-active{
     transform:scale(1.03);
-    border-color:rgba(244,197,66,.6);
+    border-color:rgba(255,215,100,.45);
+    box-shadow:0 15px 35px rgba(0,0,0,.25);
 }
 
 .teacher-image{
     width:150px;
     height:150px;
-    margin:0 auto 20px;
+    margin:0 auto 18px;
+    border-radius:20px;
     object-fit:contain;
     display:block;
+    background:rgba(255,255,255,.04);
     animation:floatTeacher 4s ease-in-out infinite;
-    filter:drop-shadow(0 10px 18px rgba(0,0,0,.3));
+    filter:drop-shadow(0 8px 14px rgba(0,0,0,.25));
 }
 
 @keyframes floatTeacher{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-8px);}
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-7px);
+    }
 }
 
 .teacher-card h3{
-    color:var(--gold);
+    color:#ffd86b;
     margin-bottom:13px;
-    font-size:1.25rem;
+    font-size:20px;
 }
 
 .teacher-info{
-    display:flex;
-    flex-direction:column;
-    gap:8px;
-}
-
-.teacher-info span{
-    opacity:.9;
-    line-height:1.5;
+    font-size:13px;
+    line-height:1.9;
+    opacity:.8;
 }
 
 .teacher-info strong{
-    color:var(--yellow);
+    color:#fff;
 }
 
-.carousel-controls{
+.teacher-controls{
     display:flex;
     justify-content:center;
-    gap:15px;
-    margin-top:5px;
+    gap:10px;
+    margin-top:8px;
 }
 
-.carousel-btn{
-    width:45px;
-    height:45px;
-    border:1px solid var(--border);
-    background:var(--glass);
-    color:white;
+.teacher-controls button{
+    width:42px;
+    height:42px;
     border-radius:50%;
+    border:1px solid rgba(255,215,100,.3);
+    background:rgba(255,255,255,.07);
+    color:#ffd86b;
     cursor:pointer;
-    font-size:1.2rem;
+    font-size:18px;
     transition:.3s;
 }
 
-.carousel-btn:hover{
-    background:var(--gold);
-    color:var(--maroon-dark);
+.teacher-controls button:hover{
+    background:#ffd86b;
+    color:#3b0018;
 }
 
-.swipe-hint{
+/* ================= PHOTO GALLERY ================= */
+
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:14px;
+    margin-top:35px;
+}
+
+.gallery-item{
+    position:relative;
+    height:190px;
+    overflow:hidden;
+    border-radius:20px;
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,215,100,.18);
+    cursor:pointer;
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
+}
+
+.gallery-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transition:.45s ease;
+}
+
+.gallery-item:hover img{
+    transform:scale(1.08);
+}
+
+.gallery-item::after{
+    content:"⌕";
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(0,0,0,.3);
+    opacity:0;
+    color:#ffd86b;
+    font-size:35px;
+    transition:.3s;
+}
+
+.gallery-item:hover::after{
+    opacity:1;
+}
+
+/* ================= PHOTO VIEWER ================= */
+
+.photo-viewer{
+    position:fixed;
+    inset:0;
+    z-index:20000;
+    background:rgba(0,0,0,.9);
+    backdrop-filter:blur(10px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:25px;
+    opacity:0;
+    visibility:hidden;
+    transition:.3s ease;
+}
+
+.photo-viewer.show{
+    opacity:1;
+    visibility:visible;
+}
+
+.photo-viewer img{
+    max-width:94vw;
+    max-height:88vh;
+    object-fit:contain;
+    border-radius:18px;
+    box-shadow:0 20px 60px rgba(0,0,0,.6);
+}
+
+.viewer-close{
+    position:absolute;
+    top:18px;
+    right:18px;
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    border:1px solid rgba(255,215,100,.35);
+    background:rgba(255,255,255,.1);
+    color:#ffd86b;
+    font-size:27px;
+    cursor:pointer;
+}
+
+/* ================= OBA MEMBERS ================= */
+
+.oba-members-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+    margin-top:35px;
+}
+
+.oba-member-card{
+    padding:25px;
     text-align:center;
-    opacity:.65;
-    font-size:.85rem;
-    margin-top:13px;
+    border-radius:25px;
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,215,100,.18);
+    backdrop-filter:blur(14px);
+    transition:.35s ease;
 }
 
-/* SCHEDULE */
+.oba-member-card:hover{
+    transform:translateY(-7px);
+    border-color:rgba(255,215,100,.4);
+    box-shadow:0 15px 35px rgba(0,0,0,.25);
+}
+
+.oba-member-image{
+    width:160px;
+    height:160px;
+    margin:0 auto 18px;
+    border-radius:50%;
+    object-fit:cover;
+    display:block;
+    background:rgba(255,255,255,.05);
+    border:2px solid rgba(255,215,100,.25);
+    filter:drop-shadow(0 8px 14px rgba(0,0,0,.25));
+}
+
+.oba-member-card h3{
+    color:#ffd86b;
+    font-size:21px;
+    margin-bottom:8px;
+}
+
+.oba-member-post{
+    font-size:13px;
+    color:#fff;
+    opacity:.9;
+    margin-bottom:10px;
+}
+
+.oba-member-desc{
+    font-size:13px;
+    line-height:1.8;
+    opacity:.72;
+}
+
+/* ================= SCHEDULE ================= */
 
 .schedule-grid{
     display:grid;
     grid-template-columns:repeat(2,1fr);
-    gap:18px;
-}
-
-.day-card{
-    background:var(--glass);
-    border:1px solid var(--border);
-    border-radius:23px;
-    padding:23px;
-    backdrop-filter:blur(15px);
-    box-shadow:var(--shadow);
-}
-
-.day-title{
-    color:var(--gold);
-    font-size:1.35rem;
-    margin-bottom:15px;
-}
-
-.subject{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
     gap:15px;
-    padding:13px 0;
-    border-bottom:1px solid rgba(255,255,255,.1);
+    margin-top:35px;
 }
 
-.subject:last-child{
-    border-bottom:0;
+.schedule-card{
+    padding:22px;
+    border-radius:22px;
+    background:rgba(255,255,255,.07);
+    border-left:4px solid #ffd86b;
+    border-top:1px solid rgba(255,255,255,.08);
+    border-right:1px solid rgba(255,255,255,.08);
+    border-bottom:1px solid rgba(255,255,255,.08);
 }
 
-.subject-name{
-    font-weight:bold;
+.schedule-day{
+    color:#ffd86b;
+    font-size:20px;
+    margin-bottom:10px;
 }
 
-.subject-time{
-    color:var(--yellow);
-    font-size:.9rem;
-    text-align:right;
+.schedule-item{
+    padding:9px 0;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    font-size:13px;
+    line-height:1.5;
 }
 
-.special-session{
-    background:rgba(244,197,66,.08);
-    margin:8px -10px;
-    padding:13px 10px;
-    border-radius:12px;
+.schedule-item:last-child{
+    border-bottom:none;
 }
 
-/* CONTACT */
+.schedule-item strong{
+    display:block;
+    color:#fff;
+}
+
+/* ================= CONTACT ================= */
 
 .contact-grid{
     display:grid;
     grid-template-columns:repeat(2,1fr);
-    gap:22px;
+    gap:20px;
+    margin-top:35px;
 }
 
 .contact-card{
-    background:var(--glass);
-    border:1px solid var(--border);
-    border-radius:25px;
-    padding:30px;
-    backdrop-filter:blur(15px);
-    box-shadow:var(--shadow);
+    padding:28px;
+    border-radius:24px;
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,215,100,.16);
 }
 
 .contact-card h3{
-    color:var(--gold);
-    margin-bottom:12px;
+    color:#ffd86b;
+    margin-bottom:10px;
 }
 
 .contact-card p{
-    line-height:1.7;
-    opacity:.86;
+    font-size:13px;
+    line-height:1.8;
+    opacity:.8;
 }
 
-/* FOOTER */
+/* ================= FOOTER ================= */
 
 footer{
-    text-align:center;
     padding:35px 20px;
-    background:rgba(0,0,0,.2);
-    border-top:1px solid rgba(255,255,255,.1);
+    text-align:center;
+    background:rgba(0,0,0,.25);
+    border-top:1px solid rgba(255,215,100,.15);
+}
+
+footer p{
+    font-size:12px;
+    opacity:.7;
     line-height:1.7;
 }
 
-footer span{
-    color:var(--gold);
-}
-
-/* REVEAL */
+/* ================= REVEAL ================= */
 
 .reveal{
     opacity:0;
     transform:translateY(30px);
-    transition:opacity .8s ease,transform .8s ease;
+    transition:1s ease;
 }
 
 .reveal.show{
@@ -569,11 +821,40 @@ footer span{
     transform:translateY(0);
 }
 
-/* TABLET */
+/* ================= RESPONSIVE ================= */
 
-@media(max-width:850px){
+@media(max-width:1000px){
 
-    .features-grid{
+    .gallery-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+}
+
+@media(max-width:800px){
+
+    .header-inner{
+        height:62px;
+    }
+
+    .brand-logo{
+        width:64px;
+        height:64px;
+    }
+
+    .brand-title h1{
+        font-size:23px;
+    }
+
+    .brand-title span{
+        font-size:8px;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .feature-grid{
         grid-template-columns:1fr;
     }
 
@@ -585,194 +866,294 @@ footer span{
         grid-template-columns:1fr;
     }
 
-    .header-inner{
-        flex-wrap:wrap;
-        justify-content:center;
+    .oba-members-grid{
+        grid-template-columns:1fr;
+    }
+
+    .gallery-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    section{
+        padding:55px 0;
     }
 }
 
-/* MOBILE */
+@media(max-width:480px){
 
-@media(max-width:600px){
+    header{
+        padding:6px 10px;
+    }
 
     .header-inner{
-        padding:12px 14px;
+        height:56px;
     }
 
     .brand-logo{
-        width:48px;
-        height:48px;
+        width:61px;
+        height:61px;
     }
 
     .brand-title{
-        font-size:1.3rem;
+        padding:0 42px;
     }
 
-    nav{
-        padding:0 10px 10px;
-        gap:4px;
+    .brand-title h1{
+        font-size:19px;
+        letter-spacing:1px;
     }
 
-    nav a{
-        font-size:.78rem;
-        padding:7px 9px;
+    .brand-title span{
+        font-size:7px;
+        letter-spacing:1px;
+    }
+
+    .menu-button{
+        width:40px;
+        height:40px;
+        border-radius:12px;
+        font-size:22px;
+    }
+
+    .side-menu{
+        width:88vw;
+        padding-top:78px;
     }
 
     .hero{
         min-height:70vh;
-        padding:55px 18px;
     }
 
-    .stats{
-        grid-template-columns:1fr;
-        max-width:330px;
-    }
-
-    section{
-        padding:65px 15px;
-    }
-
-    .about-box{
-        padding:25px 20px;
+    .hero h2{
+        font-size:40px;
     }
 
     .teacher-card{
-        flex-basis:84vw;
+        min-width:245px;
     }
 
-    .subject{
-        align-items:flex-start;
-        flex-direction:column;
+    .gallery-grid{
+        grid-template-columns:1fr 1fr;
+        gap:10px;
     }
 
-    .subject-time{
-        text-align:left;
+    .gallery-item{
+        height:150px;
     }
 
-    .language-box button{
-        padding:6px 9px;
-        font-size:.78rem;
-    }
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
+<!-- ================= HEADER ================= -->
 
 <header>
+
     <div class="header-inner">
 
-        <div class="brand">
+        <a href="#home" class="brand">
             <img
                 src="images/osaka-oba-logo.png"
                 class="brand-logo"
                 alt="Osaka School OBA Logo"
             >
+        </a>
 
-            <div class="brand-title">
-                H.A.H.C. OBA
-            </div>
+        <div class="brand-title">
+            <h1>H.A.H.C. OBA</h1>
+            <span>O/L SEMINAR PROGRAMME</span>
         </div>
 
-        <div class="language-box">
-            <button onclick="setLanguage('si')" id="lang-si">සිං</button>
-            <button onclick="setLanguage('ta')" id="lang-ta">தமிழ்</button>
-            <button onclick="setLanguage('en')" id="lang-en">ENG</button>
+        <button
+            class="menu-button"
+            id="menuButton"
+            aria-label="Open Menu"
+            onclick="toggleMenu()"
+        >
+            ☰
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- ================= MENU OVERLAY ================= -->
+
+<div
+    class="menu-overlay"
+    id="menuOverlay"
+    onclick="closeMenu()"
+></div>
+
+
+<!-- ================= SIDE MENU ================= -->
+
+<div class="side-menu" id="sideMenu">
+
+    <div class="menu-header">
+
+        <h2>H.A.H.C. OBA</h2>
+
+        <p>O/L SEMINAR PROGRAMME</p>
+
+    </div>
+
+    <div class="menu-links">
+
+        <a href="#home" onclick="closeMenu()">
+            <span>⌂</span>
+            <div data-i18n="navHome">Home</div>
+        </a>
+
+        <a href="#about" onclick="closeMenu()">
+            <span>ⓘ</span>
+            <div data-i18n="navAbout">About</div>
+        </a>
+
+        <a href="#features" onclick="closeMenu()">
+            <span>✦</span>
+            <div data-i18n="navFeatures">Features</div>
+        </a>
+
+        <a href="#teachers" onclick="closeMenu()">
+            <span>♟</span>
+            <div data-i18n="navTeachers">Teachers</div>
+        </a>
+
+        <a href="#gallery" onclick="closeMenu()">
+            <span>▧</span>
+            <div data-i18n="navGallery">Gallery</div>
+        </a>
+
+        <a href="#oba-members" onclick="closeMenu()">
+            <span>👥</span>
+            <div data-i18n="navOBA">OBA Members</div>
+        </a>
+
+        <a href="#schedule" onclick="closeMenu()">
+            <span>▣</span>
+            <div data-i18n="navSchedule">Schedule</div>
+        </a>
+
+        <a href="#contact" onclick="closeMenu()">
+            <span>☎</span>
+            <div data-i18n="navContact">Contact</div>
+        </a>
+
+    </div>
+
+    <div class="menu-language">
+
+        <div class="menu-language-title">
+            LANGUAGE / மொழி / භාෂාව
+        </div>
+
+        <div class="language-switcher">
+
+            <button data-lang="si">
+                සිං
+            </button>
+
+            <button data-lang="ta">
+                தமிழ்
+            </button>
+
+            <button data-lang="en" class="active">
+                ENG
+            </button>
+
         </div>
 
     </div>
 
-    <nav>
-        <a href="#home" data-i18n="navHome">මුල් පිටුව</a>
-        <a href="#about" data-i18n="navAbout">අප ගැන</a>
-        <a href="#features" data-i18n="navFeatures">විශේෂාංග</a>
-        <a href="#teachers" data-i18n="navTeachers">ගුරුවරු</a>
-        <a href="#schedule" data-i18n="navSchedule">කාලසටහන</a>
-        <a href="#contact" data-i18n="navContact">සම්බන්ධ වන්න</a>
-    </nav>
-</header>
+</div>
 
 
-<!-- HERO -->
-
-<main>
+<!-- ================= HERO ================= -->
 
 <section class="hero" id="home">
 
     <div class="hero-content reveal">
 
         <div class="hero-kicker" data-i18n="heroKicker">
-            H.A.H.C. OBA
+            HAMEED AL HUSSAINIE COLLAGE
         </div>
 
-        <h1>
-            O/L <span>Seminar</span><br>
-            Programme
-        </h1>
+        <h2>
+            H.A.H.C.
+            <span>OBA</span>
+        </h2>
 
         <p data-i18n="heroText">
-            අ.පො.ස. සාමාන්‍ය පෙළ විභාගය සඳහා ඔබගේ අධ්‍යයන ගමන වඩාත් ශක්තිමත් කරගැනීමට අප සමඟ එක්වන්න.
+            A special O/L Seminar Programme organised with dedication,
+            knowledge and unity for the next generation.
         </p>
 
-        <a href="#schedule"
-           class="hero-button"
-           data-i18n="heroButton">
-            කාලසටහන බලන්න
+        <a
+            href="#schedule"
+            class="hero-btn"
+            data-i18n="heroButton"
+        >
+            View Programme
         </a>
+
+        <div class="stats reveal">
+
+            <div class="stat">
+                <strong>7</strong>
+                <span data-i18n="statDays">Days</span>
+            </div>
+
+            <div class="stat">
+                <strong>9</strong>
+                <span data-i18n="statSubjects">Subjects</span>
+            </div>
+
+            <div class="stat">
+                <strong>2</strong>
+                <span data-i18n="statLanguages">Mediums</span>
+            </div>
+
+        </div>
 
     </div>
 
 </section>
 
 
-<!-- STATS -->
-
-<div class="stats reveal">
-
-    <div class="stat">
-        <strong>7</strong>
-        <span data-i18n="statDays">සතියේ දින</span>
-    </div>
-
-    <div class="stat">
-        <strong>9</strong>
-        <span data-i18n="statSubjects">විෂයයන්</span>
-    </div>
-
-    <div class="stat">
-        <strong>2</strong>
-        <span data-i18n="statLanguages">මාධ්‍ය</span>
-    </div>
-
-</div>
-
-
-<!-- ABOUT -->
+<!-- ================= ABOUT ================= -->
 
 <section id="about">
 
-    <div class="section-heading reveal">
+    <div class="section-title reveal">
 
         <h2 data-i18n="aboutTitle">
-            අප ගැන
+            About The Programme
         </h2>
 
         <p data-i18n="aboutDesc">
-            H.A.H.C. OBA O/L Seminar Programme
+            Building confidence, knowledge and examination readiness.
         </p>
 
     </div>
 
-    <div class="about-box reveal">
+    <div class="glass reveal">
 
-        <h3>
-            Hameed Al Hussainie Collage
-        </h3>
-
-        <p data-i18n="aboutText">
-            O/L සිසුන්ගේ අධ්‍යාපනික දැනුම, විභාග සූදානම සහ විෂය අවබෝධය වැඩිදියුණු කිරීම සඳහා සංවිධානය කරන ලද විශේෂ සම්මන්ත්‍රණ වැඩසටහනකි.
+        <p
+            data-i18n="aboutText"
+            style="
+                line-height:1.9;
+                font-size:14px;
+                opacity:.85;
+            "
+        >
+            The H.A.H.C. OBA O/L Seminar Programme is designed
+            to support students through focused subject sessions,
+            revision and paper discussions conducted by dedicated teachers.
         </p>
 
     </div>
@@ -780,64 +1161,64 @@ footer span{
 </section>
 
 
-<!-- FEATURES -->
+<!-- ================= FEATURES ================= -->
 
 <section id="features">
 
-    <div class="section-heading reveal">
+    <div class="section-title reveal">
 
         <h2 data-i18n="featuresTitle">
-            විශේෂාංග
+            Programme Features
         </h2>
 
         <p data-i18n="featuresDesc">
-            ඔබගේ O/L සූදානම සඳහා වැදගත් පහසුකම්
+            Everything is arranged to make the learning experience
+            focused, useful and effective.
         </p>
 
     </div>
 
-    <div class="features-grid">
+    <div class="feature-grid">
 
         <div class="feature-card reveal">
 
             <div class="feature-icon">📚</div>
 
             <h3 data-i18n="feature1Title">
-                විෂය ආවරණය
+                Subject Focus
             </h3>
 
             <p data-i18n="feature1Text">
-                ප්‍රධාන විෂයන් සඳහා සැලසුම්ගත අධ්‍යයන සැසි.
+                Dedicated sessions for important O/L subjects.
             </p>
 
         </div>
-
 
         <div class="feature-card reveal">
 
-            <div class="feature-icon">👨‍🏫</div>
+            <div class="feature-icon">🎓</div>
 
             <h3 data-i18n="feature2Title">
-                පළපුරුදු ගුරුවරු
+                Experienced Teachers
             </h3>
 
             <p data-i18n="feature2Text">
-                විභාගයට අවශ්‍ය දැනුම හා මගපෙන්වීම ලබාදෙන ගුරුවරු.
+                Learn through guidance from dedicated teachers.
             </p>
 
         </div>
-
 
         <div class="feature-card reveal">
 
             <div class="feature-icon">📝</div>
 
             <h3 data-i18n="feature3Title">
-                විභාග සූදානම
+                Revision & Papers
             </h3>
 
             <p data-i18n="feature3Text">
-                Revision සහ Paper Discussion හරහා විභාග සූදානම ශක්තිමත් කිරීම.
+                Revision sessions and paper discussions
+                to improve examination confidence.
             </p>
 
         </div>
@@ -847,403 +1228,864 @@ footer span{
 </section>
 
 
-<!-- TEACHERS -->
+<!-- ================= TEACHERS ================= -->
 
 <section id="teachers">
 
-    <div class="section-heading reveal">
+    <div class="section-title reveal">
 
         <h2 data-i18n="teachersTitle">
-            අපගේ ගුරුවරු
+            Our Teachers
         </h2>
 
         <p data-i18n="teachersDesc">
-            ඔබගේ O/L අධ්‍යයන ගමනට මගපෙන්වන ගුරුවරු
+            Dedicated educators supporting students throughout the programme.
         </p>
 
     </div>
 
 
-    <!-- SINHALA MEDIUM -->
+    <!-- ================= SINHALA MEDIUM ================= -->
 
-    <h3 class="medium-title reveal"
-        data-i18n="sinhalaMedium">
-        Sinhala Medium Teachers
-    </h3>
+    <div class="teacher-section">
 
-    <p class="medium-description reveal"
-       data-i18n="sinhalaMediumDesc">
-        Sinhala Medium
-    </p>
+        <h3
+            class="medium-title"
+            data-i18n="sinhalaMedium"
+        >
+            Sinhala Medium
+        </h3>
 
+        <p
+            class="medium-desc"
+            data-i18n="sinhalaMediumDesc"
+        >
+            Sinhala Medium Teachers
+        </p>
 
-    <div class="teacher-carousel reveal">
+        <div class="teacher-carousel">
 
-        <div class="teacher-track" id="teacherTrack">
+            <div
+                class="teacher-track"
+                id="sinhalaTrack"
+            >
 
+                <!-- 01 -->
 
-            <!-- TEACHER 01 -->
+                <div class="teacher-card is-active">
 
-            <div class="teacher-card is-active">
+                    <img
+                        src="images/teacher-01.png"
+                        class="teacher-image"
+                        alt="AMMAR IMLAR"
+                    >
 
-                <img
-                    src="images/teacher-01.png"
-                    class="teacher-image"
-                    alt="AMMAR IMLAR"
-                >
+                    <h3>AMMAR IMLAR</h3>
 
-                <h3>
-                    AMMAR IMLAR
-                </h3>
+                    <div class="teacher-info">
 
-                <div class="teacher-info">
-
-                    <span>
                         <strong data-i18n="qualificationLabel">
                             Qualification
-                        </strong>:
+                        </strong>
+
+                        <br>
+
                         <span data-i18n="teacher1Qualification">
                             Later
                         </span>
-                    </span>
 
-                    <span>
+                        <br><br>
+
                         <strong data-i18n="subjectLabel">
                             Subject
-                        </strong>:
+                        </strong>
+
+                        <br>
+
                         <span data-i18n="teacher1Subject">
                             MATHS
                         </span>
-                    </span>
+
+                    </div>
 
                 </div>
 
-            </div>
 
+                <!-- 02 -->
 
-            <!-- TEACHER 02 -->
+                <div class="teacher-card">
 
-            <div class="teacher-card">
+                    <img
+                        src="images/teacher-02.png"
+                        class="teacher-image"
+                        alt="RISKHAN"
+                    >
 
-                <img
-                    src="images/teacher-02.png"
-                    class="teacher-image"
-                    alt="RISKHAN"
-                >
+                    <h3>RISKHAN</h3>
 
-                <h3>
-                    RISKHAN
-                </h3>
+                    <div class="teacher-info">
 
-                <div class="teacher-info">
-
-                    <span>
                         <strong data-i18n="qualificationLabel">
                             Qualification
-                        </strong>:
+                        </strong>
+
+                        <br>
+
                         <span data-i18n="teacher2Qualification">
                             Later
                         </span>
-                    </span>
 
-                    <span>
+                        <br><br>
+
                         <strong data-i18n="subjectLabel">
                             Subject
-                        </strong>:
+                        </strong>
+
+                        <br>
+
                         <span data-i18n="teacher2Subject">
                             SCIENCE
                         </span>
-                    </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 03 -->
+
+                <div class="teacher-card">
+
+                    <img
+                        src="images/teacher-03.png"
+                        class="teacher-image"
+                        alt="FAHRIQ AHAMED"
+                    >
+
+                    <h3>FAHRIQ AHAMED</h3>
+
+                    <div class="teacher-info">
+
+                        <strong data-i18n="qualificationLabel">
+                            Qualification
+                        </strong>
+
+                        <br>
+
+                        <span>Later</span>
+
+                        <br><br>
+
+                        <strong data-i18n="subjectLabel">
+                            Subject
+                        </strong>
+
+                        <br>
+
+                        <span>COMMERCE</span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 04 -->
+
+                <div class="teacher-card">
+
+                    <img
+                        src="images/teacher-04.png"
+                        class="teacher-image"
+                        alt="NISTHAR"
+                    >
+
+                    <h3>NISTHAR</h3>
+
+                    <div class="teacher-info">
+
+                        <strong data-i18n="qualificationLabel">
+                            Qualification
+                        </strong>
+
+                        <br>
+
+                        <span>Later</span>
+
+                        <br><br>
+
+                        <strong data-i18n="subjectLabel">
+                            Subject
+                        </strong>
+
+                        <br>
+
+                        <span>HISTORY</span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 05 -->
+
+                <div class="teacher-card">
+
+                    <img
+                        src="images/teacher-05.png"
+                        class="teacher-image"
+                        alt="ANAS AZWER"
+                    >
+
+                    <h3>ANAS AZWER</h3>
+
+                    <div class="teacher-info">
+
+                        <strong data-i18n="qualificationLabel">
+                            Qualification
+                        </strong>
+
+                        <br>
+
+                        <span>Later</span>
+
+                        <br><br>
+
+                        <strong data-i18n="subjectLabel">
+                            Subject
+                        </strong>
+
+                        <br>
+
+                        <span>ENGLISH</span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 06 -->
+
+                <div class="teacher-card">
+
+                    <img
+                        src="images/teacher-06.png"
+                        class="teacher-image"
+                        alt="ICT Teacher"
+                    >
+
+                    <h3>Later</h3>
+
+                    <div class="teacher-info">
+
+                        <strong data-i18n="qualificationLabel">
+                            Qualification
+                        </strong>
+
+                        <br>
+
+                        <span>Later</span>
+
+                        <br><br>
+
+                        <strong data-i18n="subjectLabel">
+                            Subject
+                        </strong>
+
+                        <br>
+
+                        <span>ICT</span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 07 -->
+
+                <div class="teacher-card">
+
+                    <img
+                        src="images/teacher-07.png"
+                        class="teacher-image"
+                        alt="Sinhala Medium Teacher 07"
+                    >
+
+                    <h3>Later</h3>
+
+                    <div class="teacher-info">
+
+                        <strong data-i18n="qualificationLabel">
+                            Qualification
+                        </strong>
+
+                        <br>
+
+                        <span>Later</span>
+
+                        <br><br>
+
+                        <strong data-i18n="subjectLabel">
+                            Subject
+                        </strong>
+
+                        <br>
+
+                        <span>Later</span>
+
+                    </div>
 
                 </div>
 
             </div>
 
+            <div class="teacher-controls">
 
-            <!-- TEACHER 03 -->
+                <button onclick="moveTeachers('sinhala',-1)">
+                    ‹
+                </button>
 
-            <div class="teacher-card">
-
-                <img
-                    src="images/teacher-03.png"
-                    class="teacher-image"
-                    alt="FAHRIQ AHAMED"
-                >
-
-                <h3>
-                    FAHRIQ AHAMED
-                </h3>
-
-                <div class="teacher-info">
-
-                    <span>
-                        <strong data-i18n="qualificationLabel">
-                            Qualification
-                        </strong>:
-                        <span data-i18n="teacher3Qualification">
-                            Later
-                        </span>
-                    </span>
-
-                    <span>
-                        <strong data-i18n="subjectLabel">
-                            Subject
-                        </strong>:
-                        <span data-i18n="teacher3Subject">
-                            COMMERCE
-                        </span>
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <!-- TEACHER 04 -->
-
-            <div class="teacher-card">
-
-                <img
-                    src="images/teacher-04.png"
-                    class="teacher-image"
-                    alt="NISTHAR"
-                >
-
-                <h3>
-                    NISTHAR
-                </h3>
-
-                <div class="teacher-info">
-
-                    <span>
-                        <strong data-i18n="qualificationLabel">
-                            Qualification
-                        </strong>:
-                        <span data-i18n="teacher4Qualification">
-                            Later
-                        </span>
-                    </span>
-
-                    <span>
-                        <strong data-i18n="subjectLabel">
-                            Subject
-                        </strong>:
-                        <span data-i18n="teacher4Subject">
-                            HISTORY
-                        </span>
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <!-- TEACHER 05 -->
-
-            <div class="teacher-card">
-
-                <img
-                    src="images/teacher-05.png"
-                    class="teacher-image"
-                    alt="ANAS AZWER"
-                >
-
-                <h3>
-                    ANAS AZWER
-                </h3>
-
-                <div class="teacher-info">
-
-                    <span>
-                        <strong data-i18n="qualificationLabel">
-                            Qualification
-                        </strong>:
-                        <span data-i18n="teacher5Qualification">
-                            Later
-                        </span>
-                    </span>
-
-                    <span>
-                        <strong data-i18n="subjectLabel">
-                            Subject
-                        </strong>:
-                        <span data-i18n="teacher5Subject">
-                            ENGLISH
-                        </span>
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <!-- TEACHER 06 -->
-
-            <div class="teacher-card">
-
-                <img
-                    src="images/teacher-06.png"
-                    class="teacher-image"
-                    alt="Later"
-                >
-
-                <h3>
-                    Later
-                </h3>
-
-                <div class="teacher-info">
-
-                    <span>
-                        <strong data-i18n="qualificationLabel">
-                            Qualification
-                        </strong>:
-                        <span data-i18n="teacher6Qualification">
-                            Later
-                        </span>
-                    </span>
-
-                    <span>
-                        <strong data-i18n="subjectLabel">
-                            Subject
-                        </strong>:
-                        <span data-i18n="teacher6Subject">
-                            ICT
-                        </span>
-                    </span>
-
-                </div>
+                <button onclick="moveTeachers('sinhala',1)">
+                    ›
+                </button>
 
             </div>
 
         </div>
 
-
-        <div class="carousel-controls">
-
-            <button
-                class="carousel-btn"
-                onclick="moveTeachers(-1)">
-                ‹
-            </button>
-
-            <button
-                class="carousel-btn"
-                onclick="moveTeachers(1)">
-                ›
-            </button>
-
-        </div>
-
-        <div class="swipe-hint"
-             data-i18n="swipeHint">
+        <p
+            data-i18n="swipeHint"
+            style="
+                text-align:center;
+                font-size:11px;
+                opacity:.55;
+                margin-top:10px;
+            "
+        >
             Swipe to explore teachers
-        </div>
+        </p>
 
     </div>
 
 
-    <!-- TAMIL MEDIUM -->
+    <!-- ================= TAMIL MEDIUM ================= -->
 
-    <h3 class="medium-title reveal"
-        data-i18n="tamilMedium">
-        Tamil Medium Teachers
-    </h3>
+    <div class="teacher-section">
 
-    <p class="medium-description reveal"
-       data-i18n="tamilMediumDesc">
-        Tamil Medium teachers details will be added soon.
-    </p>
+        <h3
+            class="medium-title"
+            data-i18n="tamilMedium"
+        >
+            Tamil Medium
+        </h3>
 
+        <p
+            class="medium-desc"
+            data-i18n="tamilMediumDesc"
+        >
+            Tamil Medium Teachers
+        </p>
 
-    <div class="teacher-carousel reveal">
+        <div class="teacher-carousel">
 
-        <div class="teacher-track">
+            <div
+                class="teacher-track"
+                id="tamilTrack"
+            >
 
-            <!-- TAMIL TEACHER PLACEHOLDER 01 -->
+                <!-- TAMIL 01 -->
 
-            <div class="teacher-card">
+                <div class="teacher-card is-active">
 
-                <h3>
-                    Later
-                </h3>
+                    <img
+                        src="images/teacher-08.png"
+                        class="teacher-image"
+                        alt="Tamil Medium Teacher 01"
+                    >
 
-                <div class="teacher-info">
+                    <h3>Later</h3>
 
-                    <span>
+                    <div class="teacher-info">
+
                         <strong data-i18n="qualificationLabel">
                             Qualification
-                        </strong>:
-                        Later
-                    </span>
+                        </strong>
 
-                    <span>
+                        <br>
+
+                        <span>Later</span>
+
+                        <br><br>
+
                         <strong data-i18n="subjectLabel">
                             Subject
-                        </strong>:
-                        Later
-                    </span>
+                        </strong>
+
+                        <br>
+
+                        <span>Later</span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TAMIL 02 -->
+
+                <div class="teacher-card">
+
+                    <img
+                        src="images/teacher-09.png"
+                        class="teacher-image"
+                        alt="Tamil Medium Teacher 02"
+                    >
+
+                    <h3>Later</h3>
+
+                    <div class="teacher-info">
+
+                        <strong data-i18n="qualificationLabel">
+                            Qualification
+                        </strong>
+
+                        <br>
+
+                        <span>Later</span>
+
+                        <br><br>
+
+                        <strong data-i18n="subjectLabel">
+                            Subject
+                        </strong>
+
+                        <br>
+
+                        <span>Later</span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TAMIL 03 -->
+
+                <div class="teacher-card">
+
+                    <img
+                        src="images/teacher-10.png"
+                        class="teacher-image"
+                        alt="Tamil Medium Teacher 03"
+                    >
+
+                    <h3>Later</h3>
+
+                    <div class="teacher-info">
+
+                        <strong data-i18n="qualificationLabel">
+                            Qualification
+                        </strong>
+
+                        <br>
+
+                        <span>Later</span>
+
+                        <br><br>
+
+                        <strong data-i18n="subjectLabel">
+                            Subject
+                        </strong>
+
+                        <br>
+
+                        <span>Later</span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TAMIL 04 -->
+
+                <div class="teacher-card">
+
+                    <img
+                        src="images/teacher-11.png"
+                        class="teacher-image"
+                        alt="Tamil Medium Teacher 04"
+                    >
+
+                    <h3>Later</h3>
+
+                    <div class="teacher-info">
+
+                        <strong data-i18n="qualificationLabel">
+                            Qualification
+                        </strong>
+
+                        <br>
+
+                        <span>Later</span>
+
+                        <br><br>
+
+                        <strong data-i18n="subjectLabel">
+                            Subject
+                        </strong>
+
+                        <br>
+
+                        <span>Later</span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TAMIL 05 -->
+
+                <div class="teacher-card">
+
+                    <img
+                        src="images/teacher-12.png"
+                        class="teacher-image"
+                        alt="Tamil Medium Teacher 05"
+                    >
+
+                    <h3>Later</h3>
+
+                    <div class="teacher-info">
+
+                        <strong data-i18n="qualificationLabel">
+                            Qualification
+                        </strong>
+
+                        <br>
+
+                        <span>Later</span>
+
+                        <br><br>
+
+                        <strong data-i18n="subjectLabel">
+                            Subject
+                        </strong>
+
+                        <br>
+
+                        <span>Later</span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TAMIL 06 -->
+
+                <div class="teacher-card">
+
+                    <img
+                        src="images/teacher-13.png"
+                        class="teacher-image"
+                        alt="Tamil Medium Teacher 06"
+                    >
+
+                    <h3>Later</h3>
+
+                    <div class="teacher-info">
+
+                        <strong data-i18n="qualificationLabel">
+                            Qualification
+                        </strong>
+
+                        <br>
+
+                        <span>Later</span>
+
+                        <br><br>
+
+                        <strong data-i18n="subjectLabel">
+                            Subject
+                        </strong>
+
+                        <br>
+
+                        <span>Later</span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TAMIL 07 -->
+
+                <div class="teacher-card">
+
+                    <img
+                        src="images/teacher-14.png"
+                        class="teacher-image"
+                        alt="Tamil Medium Teacher 07"
+                    >
+
+                    <h3>Later</h3>
+
+                    <div class="teacher-info">
+
+                        <strong data-i18n="qualificationLabel">
+                            Qualification
+                        </strong>
+
+                        <br>
+
+                        <span>Later</span>
+
+                        <br><br>
+
+                        <strong data-i18n="subjectLabel">
+                            Subject
+                        </strong>
+
+                        <br>
+
+                        <span>Later</span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TAMIL 08 -->
+
+                <div class="teacher-card">
+
+                    <img
+                        src="images/teacher-15.png"
+                        class="teacher-image"
+                        alt="Tamil Medium Teacher 08"
+                    >
+
+                    <h3>Later</h3>
+
+                    <div class="teacher-info">
+
+                        <strong data-i18n="qualificationLabel">
+                            Qualification
+                        </strong>
+
+                        <br>
+
+                        <span>Later</span>
+
+                        <br><br>
+
+                        <strong data-i18n="subjectLabel">
+                            Subject
+                        </strong>
+
+                        <br>
+
+                        <span>Later</span>
+
+                    </div>
 
                 </div>
 
             </div>
 
+            <div class="teacher-controls">
 
-            <!-- TAMIL TEACHER PLACEHOLDER 02 -->
+                <button onclick="moveTeachers('tamil',-1)">
+                    ‹
+                </button>
 
-            <div class="teacher-card">
-
-                <h3>
-                    Later
-                </h3>
-
-                <div class="teacher-info">
-
-                    <span>
-                        <strong data-i18n="qualificationLabel">
-                            Qualification
-                        </strong>:
-                        Later
-                    </span>
-
-                    <span>
-                        <strong data-i18n="subjectLabel">
-                            Subject
-                        </strong>:
-                        Later
-                    </span>
-
-                </div>
+                <button onclick="moveTeachers('tamil',1)">
+                    ›
+                </button>
 
             </div>
 
+        </div>
 
-            <!-- TAMIL TEACHER PLACEHOLDER 03 -->
+        <p
+            data-i18n="swipeHint"
+            style="
+                text-align:center;
+                font-size:11px;
+                opacity:.55;
+                margin-top:10px;
+            "
+        >
+            Swipe to explore teachers
+        </p>
 
-            <div class="teacher-card">
+    </div>
 
-                <h3>
-                    Later
-                </h3>
+</section>
 
-                <div class="teacher-info">
 
-                    <span>
-                        <strong data-i18n="qualificationLabel">
-                            Qualification
-                        </strong>:
-                        Later
-                    </span>
+<!-- ================= CLASS PHOTO GALLERY ================= -->
 
-                    <span>
-                        <strong data-i18n="subjectLabel">
-                            Subject
-                        </strong>:
-                        Later
-                    </span>
+<section id="gallery">
 
-                </div>
+    <div class="section-title reveal">
 
+        <h2 data-i18n="galleryTitle">
+            Our Learning Moments
+        </h2>
+
+        <p data-i18n="galleryDesc">
+            Moments from our students, classes and seminar programme.
+        </p>
+
+    </div>
+
+    <div class="gallery-grid">
+
+        <div class="gallery-item reveal" onclick="openPhoto('images/class-01.jpg')">
+            <img src="images/class-01.jpg" alt="Class Photo 01">
+        </div>
+
+        <div class="gallery-item reveal" onclick="openPhoto('images/class-02.jpg')">
+            <img src="images/class-02.jpg" alt="Class Photo 02">
+        </div>
+
+        <div class="gallery-item reveal" onclick="openPhoto('images/class-03.jpg')">
+            <img src="images/class-03.jpg" alt="Class Photo 03">
+        </div>
+
+        <div class="gallery-item reveal" onclick="openPhoto('images/class-04.jpg')">
+            <img src="images/class-04.jpg" alt="Class Photo 04">
+        </div>
+
+        <div class="gallery-item reveal" onclick="openPhoto('images/class-05.jpg')">
+            <img src="images/class-05.jpg" alt="Class Photo 05">
+        </div>
+
+        <div class="gallery-item reveal" onclick="openPhoto('images/class-06.jpg')">
+            <img src="images/class-06.jpg" alt="Class Photo 06">
+        </div>
+
+        <div class="gallery-item reveal" onclick="openPhoto('images/class-07.jpg')">
+            <img src="images/class-07.jpg" alt="Class Photo 07">
+        </div>
+
+        <div class="gallery-item reveal" onclick="openPhoto('images/class-08.jpg')">
+            <img src="images/class-08.jpg" alt="Class Photo 08">
+        </div>
+
+        <div class="gallery-item reveal" onclick="openPhoto('images/class-09.jpg')">
+            <img src="images/class-09.jpg" alt="Class Photo 09">
+        </div>
+
+        <div class="gallery-item reveal" onclick="openPhoto('images/class-10.jpg')">
+            <img src="images/class-10.jpg" alt="Class Photo 10">
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PHOTO VIEWER ================= -->
+
+<div
+    class="photo-viewer"
+    id="photoViewer"
+    onclick="closePhoto(event)"
+>
+
+    <button
+        class="viewer-close"
+        onclick="closePhoto()"
+    >
+        ×
+    </button>
+
+    <img
+        id="viewerImage"
+        src=""
+        alt="Full Photo"
+    >
+
+</div>
+
+
+<!-- ================= OBA MEMBERS ================= -->
+
+<section id="oba-members">
+
+    <div class="section-title reveal">
+
+        <h2 data-i18n="obaTitle">
+         OBA Members
+        </h2>
+
+        <p data-i18n="obaDesc">
+            Dedicated members supporting the OBA and the seminar programme.
+        </p>
+
+    </div>
+
+
+    <div class="oba-members-grid">
+
+        <!-- MEMBER 01 -->
+
+        <div class="oba-member-card reveal">
+
+            <img
+                src="images/oba-member-01.jpg"
+                class="oba-member-image"
+                alt="OBA Member 01"
+            >
+
+            <h3>
+                Member Name
+            </h3>
+
+            <div
+                class="oba-member-post"
+                data-i18n="obaPost"
+            >
+                OBA Committee Member
             </div>
+
+            <p
+                class="oba-member-desc"
+                data-i18n="obaMemberDesc"
+            >
+                Supporting educational activities and helping to
+                organise meaningful programmes for students.
+            </p>
+
+        </div>
+
+
+        <!-- MEMBER 02 -->
+
+        <div class="oba-member-card reveal">
+
+            <img
+                src="images/oba-member-02.jpg"
+                class="oba-member-image"
+                alt="OBA Member 02"
+            >
+
+            <h3>
+                Member Name
+            </h3>
+
+            <div
+                class="oba-member-post"
+                data-i18n="obaPost"
+            >
+                OBA Committee Member
+            </div>
+
+            <p
+                class="oba-member-desc"
+                data-i18n="obaMemberDesc"
+            >
+                Supporting educational activities and helping to
+                organise meaningful programmes for students.
+            </p>
 
         </div>
 
@@ -1252,253 +2094,191 @@ footer span{
 </section>
 
 
-<!-- SCHEDULE -->
+<!-- ================= SCHEDULE ================= -->
 
 <section id="schedule">
 
-    <div class="section-heading reveal">
+    <div class="section-title reveal">
 
         <h2 data-i18n="scheduleTitle">
-            සම්මන්ත්‍රණ කාලසටහන
+            Seminar Schedule
         </h2>
 
         <p data-i18n="scheduleDesc">
-            සතිය පුරා පැවැත්වෙන විෂය සැසි
+            Complete weekly programme schedule.
         </p>
 
     </div>
 
-
     <div class="schedule-grid">
 
+        <div class="schedule-card reveal">
 
-        <!-- MONDAY -->
-
-        <div class="day-card reveal">
-
-            <div class="day-title"
-                 data-i18n="monday">
+            <div class="schedule-day" data-i18n="monday">
                 Monday
             </div>
 
-            <div class="subject">
+            <div class="schedule-item">
 
-                <span class="subject-name"
-                      data-i18n="science">
+                <strong data-i18n="science">
                     Science
-                </span>
+                </strong>
 
-                <span class="subject-time">
-                    6.45 PM - 9.00 PM
-                </span>
+                6.45 PM - 9.00 PM
 
             </div>
 
         </div>
 
 
-        <!-- TUESDAY -->
+        <div class="schedule-card reveal">
 
-        <div class="day-card reveal">
-
-            <div class="day-title"
-                 data-i18n="tuesday">
+            <div class="schedule-day" data-i18n="tuesday">
                 Tuesday
             </div>
 
-            <div class="subject">
+            <div class="schedule-item">
 
-                <span class="subject-name"
-                      data-i18n="maths">
+                <strong data-i18n="maths">
                     Maths
-                </span>
+                </strong>
 
-                <span class="subject-time">
-                    6.45 PM - 9.00 PM
-                </span>
+                6.45 PM - 9.00 PM
 
             </div>
 
         </div>
 
 
-        <!-- WEDNESDAY -->
+        <div class="schedule-card reveal">
 
-        <div class="day-card reveal">
-
-            <div class="day-title"
-                 data-i18n="wednesday">
+            <div class="schedule-day" data-i18n="wednesday">
                 Wednesday
             </div>
 
-            <div class="subject">
+            <div class="schedule-item">
 
-                <span class="subject-name"
-                      data-i18n="commerce">
+                <strong data-i18n="commerce">
                     Commerce
-                </span>
+                </strong>
 
-                <span class="subject-time">
-                    6.45 PM - 9.00 PM
-                </span>
+                6.45 PM - 9.00 PM
 
             </div>
 
         </div>
 
 
-        <!-- THURSDAY -->
+        <div class="schedule-card reveal">
 
-        <div class="day-card reveal">
-
-            <div class="day-title"
-                 data-i18n="thursday">
+            <div class="schedule-day" data-i18n="thursday">
                 Thursday
             </div>
 
-            <div class="subject">
+            <div class="schedule-item">
 
-                <span class="subject-name"
-                      data-i18n="english">
+                <strong data-i18n="english">
                     English
-                </span>
+                </strong>
 
-                <span class="subject-time">
-                    6.45 PM - 9.00 PM
-                </span>
+                6.45 PM - 9.00 PM
 
             </div>
 
+            <div class="schedule-item">
 
-            <div class="subject special-session">
-
-                <span class="subject-name"
-                      data-i18n="specialSession">
+                <strong data-i18n="specialSession">
                     Special Session
-                </span>
+                </strong>
 
-                <span class="subject-time">
-                    9.00 PM - 10.00 PM
-                </span>
+                9.00 PM - 10.00 PM
 
             </div>
 
         </div>
 
 
-        <!-- FRIDAY -->
+        <div class="schedule-card reveal">
 
-        <div class="day-card reveal">
-
-            <div class="day-title"
-                 data-i18n="friday">
+            <div class="schedule-day" data-i18n="friday">
                 Friday
             </div>
 
-            <div class="subject">
+            <div class="schedule-item">
 
-                <span class="subject-name"
-                      data-i18n="mathsRevision">
+                <strong data-i18n="mathsRevision">
                     Maths Revision
-                </span>
+                </strong>
 
-                <span class="subject-time">
-                    6.45 PM - 9.00 PM
-                </span>
+                6.45 PM - 9.00 PM
 
             </div>
 
         </div>
 
 
-        <!-- SATURDAY -->
+        <div class="schedule-card reveal">
 
-        <div class="day-card reveal">
-
-            <div class="day-title"
-                 data-i18n="saturday">
+            <div class="schedule-day" data-i18n="saturday">
                 Saturday
             </div>
 
+            <div class="schedule-item">
 
-            <div class="subject">
-
-                <span class="subject-name"
-                      data-i18n="ict">
+                <strong data-i18n="ict">
                     ICT
-                </span>
+                </strong>
 
-                <span class="subject-time">
-                    10.30 AM - 1.30 PM
-                </span>
+                10.30 AM - 1.30 PM
 
             </div>
 
+            <div class="schedule-item">
 
-            <div class="subject">
-
-                <span class="subject-name"
-                      data-i18n="history">
+                <strong data-i18n="history">
                     History
-                </span>
+                </strong>
 
-                <span class="subject-time">
-                    2.00 PM - 4.00 PM
-                </span>
+                2.00 PM - 4.00 PM
 
             </div>
 
+            <div class="schedule-item">
 
-            <div class="subject">
-
-                <span class="subject-name"
-                      data-i18n="sinhala">
+                <strong data-i18n="sinhala">
                     Sinhala
-                </span>
+                </strong>
 
-                <span class="subject-time">
-                    6.45 PM - 9.00 PM
-                </span>
+                6.45 PM - 9.00 PM
 
             </div>
 
         </div>
 
 
-        <!-- SUNDAY -->
+        <div class="schedule-card reveal">
 
-        <div class="day-card reveal">
-
-            <div class="day-title"
-                 data-i18n="sunday">
+            <div class="schedule-day" data-i18n="sunday">
                 Sunday
             </div>
 
+            <div class="schedule-item">
 
-            <div class="subject">
-
-                <span class="subject-name"
-                      data-i18n="sinhala">
+                <strong data-i18n="sinhala">
                     Sinhala
-                </span>
+                </strong>
 
-                <span class="subject-time">
-                    9.00 AM - 12.00 PM
-                </span>
+                9.00 AM - 12.00 PM
 
             </div>
 
+            <div class="schedule-item">
 
-            <div class="subject">
-
-                <span class="subject-name"
-                      data-i18n="mathsPaper">
+                <strong data-i18n="mathsPaper">
                     Maths Paper Discussion
-                </span>
+                </strong>
 
-                <span class="subject-time">
-                    2.00 PM - 5.00 PM
-                </span>
+                2.00 PM - 5.00 PM
 
             </div>
 
@@ -1509,22 +2289,21 @@ footer span{
 </section>
 
 
-<!-- CONTACT -->
+<!-- ================= CONTACT ================= -->
 
 <section id="contact">
 
-    <div class="section-heading reveal">
+    <div class="section-title reveal">
 
         <h2 data-i18n="contactTitle">
-            සම්බන්ධ වන්න
+            Contact & Information
         </h2>
 
         <p data-i18n="contactDesc">
-            වැඩසටහන පිළිබඳ වැඩි විස්තර සඳහා
+            For programme information and educational support.
         </p>
 
     </div>
-
 
     <div class="contact-grid">
 
@@ -1535,20 +2314,21 @@ footer span{
             </h3>
 
             <p data-i18n="contactEducationText">
-                Hameed Al Hussainie Collage
+                Hameed Al Hussainie Collage OBA
+                O/L Seminar Programme.
             </p>
 
         </div>
 
-
         <div class="contact-card reveal">
 
             <h3 data-i18n="contactSupport">
-                Support
+                Student Support
             </h3>
 
             <p data-i18n="contactSupportText">
-                H.A.H.C. OBA
+                Students can follow the weekly programme
+                and attend the relevant subject sessions.
             </p>
 
         </div>
@@ -1557,10 +2337,8 @@ footer span{
 
 </section>
 
-</main>
 
-
-<!-- FOOTER -->
+<!-- ================= FOOTER ================= -->
 
 <footer>
 
@@ -1568,550 +2346,774 @@ footer span{
         © 2026 H.A.H.C. OBA | O/L Seminar Programme
     </p>
 
-    <p>
-        <span>Hameed Al Hussainie Collage</span>
-    </p>
-
 </footer>
 
 
 <script>
 
-/* =========================
-   TRANSLATIONS
-========================= */
+/* ================= TRANSLATIONS ================= */
 
 const translations = {
 
-    si: {
+si: {
 
-        navHome:"මුල් පිටුව",
-        navAbout:"අප ගැන",
-        navFeatures:"විශේෂාංග",
-        navTeachers:"ගුරුවරු",
-        navSchedule:"කාලසටහන",
-        navContact:"සම්බන්ධ වන්න",
+navHome:"මුල් පිටුව",
+navAbout:"අප ගැන",
+navFeatures:"විශේෂාංග",
+navTeachers:"ගුරුවරු",
+navGallery:"ඡායාරූප",
+navOBA:"OBA සාමාජිකයන්",
+navSchedule:"කාලසටහන",
+navContact:"සම්බන්ධ වන්න",
 
-        heroKicker:"H.A.H.C. OBA",
-        heroText:"අ.පො.ස. සාමාන්‍ය පෙළ විභාගය සඳහා ඔබගේ අධ්‍යයන ගමන වඩාත් ශක්තිමත් කරගැනීමට අප සමඟ එක්වන්න.",
-        heroButton:"කාලසටහන බලන්න",
+heroKicker:"HAMEED AL HUSSAINIE COLLAGE",
 
-        statDays:"සතියේ දින",
-        statSubjects:"විෂයයන්",
-        statLanguages:"මාධ්‍ය",
+heroText:"අනාගත පරපුර සඳහා කැපවීම, දැනුම සහ එකමුතුව සමඟ සංවිධානය කරන විශේෂ O/L සම්මන්ත්‍රණ වැඩසටහනකි.",
 
-        aboutTitle:"අප ගැන",
-        aboutDesc:"H.A.H.C. OBA O/L Seminar Programme",
-        aboutText:"O/L සිසුන්ගේ අධ්‍යාපනික දැනුම, විභාග සූදානම සහ විෂය අවබෝධය වැඩිදියුණු කිරීම සඳහා සංවිධානය කරන ලද විශේෂ සම්මන්ත්‍රණ වැඩසටහනකි.",
+heroButton:"වැඩසටහන බලන්න",
 
-        featuresTitle:"විශේෂාංග",
-        featuresDesc:"ඔබගේ O/L සූදානම සඳහා වැදගත් පහසුකම්",
+statDays:"සතියේ දින",
+statSubjects:"විෂයයන්",
+statLanguages:"මාධ්‍ය",
 
-        feature1Title:"විෂය ආවරණය",
-        feature1Text:"ප්‍රධාන විෂයන් සඳහා සැලසුම්ගත අධ්‍යයන සැසි.",
+aboutTitle:"වැඩසටහන ගැන",
 
-        feature2Title:"පළපුරුදු ගුරුවරු",
-        feature2Text:"විභාගයට අවශ්‍ය දැනුම හා මගපෙන්වීම ලබාදෙන ගුරුවරු.",
+aboutDesc:"විශ්වාසය, දැනුම සහ විභාග සූදානම ගොඩනැගීම.",
 
-        feature3Title:"විභාග සූදානම",
-        feature3Text:"Revision සහ Paper Discussion හරහා විභාග සූදානම ශක්තිමත් කිරීම.",
+aboutText:"H.A.H.C. OBA O/L සම්මන්ත්‍රණ වැඩසටහන කැපවූ ගුරුවරුන් විසින් පවත්වන විෂය සැසි, පුනරීක්ෂණ සහ ප්‍රශ්න පත්‍ර සාකච්ඡා හරහා සිසුන්ට සහාය වීම සඳහා සැලසුම් කර ඇත.",
 
-        teachersTitle:"අපගේ ගුරුවරු",
-        teachersDesc:"ඔබගේ O/L අධ්‍යයන ගමනට මගපෙන්වන ගුරුවරු",
+featuresTitle:"වැඩසටහන් විශේෂාංග",
 
-        sinhalaMedium:"සිංහල මාධ්‍ය ගුරුවරු",
-        sinhalaMediumDesc:"සිංහල මාධ්‍ය",
+featuresDesc:"ඉගෙනුම් අත්දැකීම අවධානයෙන් හා ප්‍රයෝජනවත් ලෙස සිදු කිරීමට සියල්ල සකස් කර ඇත.",
 
-        tamilMedium:"දෙමළ මාධ්‍ය ගුරුවරු",
-        tamilMediumDesc:"දෙමළ මාධ්‍ය ගුරුවරුන්ගේ විස්තර ඉක්මනින් එකතු කෙරේ.",
+feature1Title:"විෂය අවධානය",
+feature1Text:"වැදගත් O/L විෂයයන් සඳහා විශේෂ සැසි.",
 
-        qualificationLabel:"සුදුසුකම්",
-        subjectLabel:"විෂය",
+feature2Title:"පළපුරුදු ගුරුවරු",
+feature2Text:"කැපවූ ගුරුවරුන්ගේ මඟපෙන්වීම සමඟ ඉගෙන ගන්න.",
 
-        teacher1Qualification:"පසුව",
-        teacher1Subject:"ගණිතය",
+feature3Title:"පුනරීක්ෂණ සහ ප්‍රශ්න පත්‍ර",
+feature3Text:"විභාග විශ්වාසය වැඩි කිරීමට පුනරීක්ෂණ සහ ප්‍රශ්න පත්‍ර සාකච්ඡා.",
 
-        teacher2Qualification:"පසුව",
-        teacher2Subject:"විද්‍යාව",
+teachersTitle:"අපගේ ගුරුවරු",
+teachersDesc:"වැඩසටහන පුරාම සිසුන්ට සහාය වන කැපවූ අධ්‍යාපනඥයන්.",
 
-        teacher3Qualification:"පසුව",
-        teacher3Subject:"වාණිජ",
+sinhalaMedium:"සිංහල මාධ්‍ය",
+sinhalaMediumDesc:"සිංහල මාධ්‍ය ගුරුවරු",
 
-        teacher4Qualification:"පසුව",
-        teacher4Subject:"ඉතිහාසය",
+tamilMedium:"දෙමළ මාධ්‍ය",
+tamilMediumDesc:"දෙමළ මාධ්‍ය ගුරුවරු",
 
-        teacher5Qualification:"පසුව",
-        teacher5Subject:"ඉංග්‍රීසි",
+qualificationLabel:"සුදුසුකම",
+subjectLabel:"විෂය",
 
-        teacher6Qualification:"පසුව",
-        teacher6Subject:"ICT",
+teacher1Qualification:"පසුව",
+teacher1Subject:"ගණිතය",
 
-        swipeHint:"ගුරුවරුන් බැලීමට Swipe කරන්න",
+teacher2Qualification:"පසුව",
+teacher2Subject:"විද්‍යාව",
 
-        scheduleTitle:"සම්මන්ත්‍රණ කාලසටහන",
-        scheduleDesc:"සතිය පුරා පැවැත්වෙන විෂය සැසි",
+swipeHint:"ගුරුවරුන් බැලීමට Swipe කරන්න",
 
-        monday:"සඳුදා",
-        tuesday:"අඟහරුවාදා",
-        wednesday:"බදාදා",
-        thursday:"බ්‍රහස්පතින්දා",
-        friday:"සිකුරාදා",
-        saturday:"සෙනසුරාදා",
-        sunday:"ඉරිදා",
+galleryTitle:"අපගේ ඉගෙනුම් මතකයන්",
+galleryDesc:"අපගේ සිසුන්, පන්ති සහ සම්මන්ත්‍රණ වැඩසටහනේ අවස්ථා.",
 
-        science:"විද්‍යාව",
-        maths:"ගණිතය",
-        commerce:"වාණිජ",
-        english:"ඉංග්‍රීසි",
-        specialSession:"විශේෂ සැසිය",
-        mathsRevision:"ගණිත පුනරීක්ෂණය",
-        history:"ඉතිහාසය",
-        sinhala:"සිංහල",
-        ict:"ICT",
-        mathsPaper:"ගණිත ප්‍රශ්න පත්‍ර සාකච්ඡාව",
+obaTitle:"Osaka OBA සාමාජිකයන්",
+obaDesc:"OBA සහ සම්මන්ත්‍රණ වැඩසටහන සඳහා සහාය වන කැපවූ සාමාජිකයන්.",
 
-        contactTitle:"සම්බන්ධ වන්න",
-        contactDesc:"වැඩසටහන පිළිබඳ වැඩි විස්තර සඳහා",
+obaPost:"OBA කමිටු සාමාජික",
+obaMemberDesc:"සිසුන් සඳහා අර්ථවත් වැඩසටහන් සංවිධානය කිරීමට සහ අධ්‍යාපනික ක්‍රියාකාරකම් සඳහා සහාය වේ.",
 
-        contactEducation:"අධ්‍යාපනය",
-        contactEducationText:"Hameed Al Hussainie Collage",
+scheduleTitle:"සම්මන්ත්‍රණ කාලසටහන",
+scheduleDesc:"සම්පූර්ණ සතිපතා වැඩසටහන් කාලසටහන.",
 
-        contactSupport:"සහාය",
-        contactSupportText:"H.A.H.C. OBA",
+monday:"සඳුදා",
+tuesday:"අඟහරුවාදා",
+wednesday:"බදාදා",
+thursday:"බ්‍රහස්පතින්දා",
+friday:"සිකුරාදා",
+saturday:"සෙනසුරාදා",
+sunday:"ඉරිදා",
 
-        footerText:"© 2026 H.A.H.C. OBA | O/L Seminar Programme"
+science:"විද්‍යාව",
+maths:"ගණිතය",
+commerce:"වාණිජ",
+english:"ඉංග්‍රීසි",
+specialSession:"විශේෂ සැසිය",
+mathsRevision:"ගණිත පුනරීක්ෂණය",
+history:"ඉතිහාසය",
+sinhala:"සිංහල",
+ict:"ICT",
+mathsPaper:"ගණිත ප්‍රශ්න පත්‍ර සාකච්ඡාව",
+
+contactTitle:"සම්බන්ධතා සහ තොරතුරු",
+contactDesc:"වැඩසටහන් තොරතුරු සහ අධ්‍යාපනික සහාය සඳහා.",
+contactEducation:"අධ්‍යාපනය",
+contactEducationText:"Hameed Al Hussainie Collage OBA O/L සම්මන්ත්‍රණ වැඩසටහන.",
+contactSupport:"ශිෂ්‍ය සහාය",
+contactSupportText:"සිසුන්ට සතිපතා වැඩසටහන අනුගමනය කර අදාළ විෂය සැසිවලට සහභාගී විය හැක.",
+
+footerText:"© 2026 H.A.H.C. OBA | O/L Seminar Programme"
+
+},
+
+
+ta: {
+
+navHome:"முகப்பு",
+navAbout:"எங்களைப் பற்றி",
+navFeatures:"சிறப்பம்சங்கள்",
+navTeachers:"ஆசிரியர்கள்",
+navGallery:"புகைப்படங்கள்",
+navOBA:"OBA உறுப்பினர்கள்",
+navSchedule:"அட்டவணை",
+navContact:"தொடர்பு",
+
+heroKicker:"HAMEED AL HUSSAINIE COLLAGE",
+
+heroText:"அடுத்த தலைமுறைக்காக அர்ப்பணிப்பு, அறிவு மற்றும் ஒற்றுமையுடன் ஏற்பாடு செய்யப்பட்ட சிறப்பு O/L கருத்தரங்க நிகழ்ச்சி.",
+
+heroButton:"நிகழ்ச்சியைப் பார்க்க",
+
+statDays:"வார நாட்கள்",
+statSubjects:"பாடங்கள்",
+statLanguages:"மொழி ஊடகங்கள்",
+
+aboutTitle:"நிகழ்ச்சி பற்றி",
+aboutDesc:"நம்பிக்கை, அறிவு மற்றும் பரீட்சைத் தயாரிப்பை உருவாக்குதல்.",
+
+aboutText:"H.A.H.C. OBA O/L கருத்தரங்க நிகழ்ச்சி அர்ப்பணிப்புள்ள ஆசிரியர்களால் நடத்தப்படும் பாட அமர்வுகள், மீளாய்வு மற்றும் வினாத்தாள் கலந்துரையாடல்கள் மூலம் மாணவர்களுக்கு ஆதரவளிக்க வடிவமைக்கப்பட்டுள்ளது.",
+
+featuresTitle:"நிகழ்ச்சி சிறப்பம்சங்கள்",
+featuresDesc:"கற்றல் அனுபவத்தை பயனுள்ளதாகவும் கவனம் செலுத்தப்பட்டதாகவும் மாற்ற அனைத்தும் ஏற்பாடு செய்யப்பட்டுள்ளது.",
+
+feature1Title:"பாட கவனம்",
+feature1Text:"முக்கியமான O/L பாடங்களுக்கான சிறப்பு அமர்வுகள்.",
+
+feature2Title:"அனுபவமுள்ள ஆசிரியர்கள்",
+feature2Text:"அர்ப்பணிப்புள்ள ஆசிரியர்களின் வழிகாட்டுதலுடன் கற்றுக்கொள்ளுங்கள்.",
+
+feature3Title:"மீளாய்வு & வினாத்தாள்கள்",
+feature3Text:"பரீட்சை நம்பிக்கையை மேம்படுத்த மீளாய்வு மற்றும் வினாத்தாள் கலந்துரையாடல்கள்.",
+
+teachersTitle:"எங்கள் ஆசிரியர்கள்",
+teachersDesc:"நிகழ்ச்சி முழுவதும் மாணவர்களுக்கு ஆதரவளிக்கும் அர்ப்பணிப்புள்ள ஆசிரியர்கள்.",
+
+sinhalaMedium:"சிங்கள மொழி மூலம்",
+sinhalaMediumDesc:"சிங்கள மொழி மூலம் ஆசிரியர்கள்",
+
+tamilMedium:"தமிழ் மொழி மூலம்",
+tamilMediumDesc:"தமிழ் மொழி மூலம் ஆசிரியர்கள்",
+
+qualificationLabel:"தகுதி",
+subjectLabel:"பாடம்",
+
+teacher1Qualification:"பின்னர்",
+teacher1Subject:"கணிதம்",
+
+teacher2Qualification:"பின்னர்",
+teacher2Subject:"விஞ்ஞானம்",
+
+swipeHint:"ஆசிரியர்களைப் பார்க்க Swipe செய்யவும்",
+
+galleryTitle:"எங்கள் கற்றல் நினைவுகள்",
+galleryDesc:"எங்கள் மாணவர்கள், வகுப்புகள் மற்றும் கருத்தரங்க நிகழ்ச்சியின் சிறப்பான தருணங்கள்.",
+
+obaTitle:"Osaka OBA உறுப்பினர்கள்",
+obaDesc:"OBA மற்றும் கருத்தரங்க நிகழ்ச்சிக்கு ஆதரவளிக்கும் அர்ப்பணிப்புள்ள உறுப்பினர்கள்.",
+
+obaPost:"OBA குழு உறுப்பினர்",
+obaMemberDesc:"மாணவர்களுக்கான அர்த்தமுள்ள நிகழ்ச்சிகளை ஏற்பாடு செய்வதற்கும் கல்வி நடவடிக்கைகளுக்கும் ஆதரவளிக்கிறார்.",
+
+scheduleTitle:"கருத்தரங்க அட்டவணை",
+scheduleDesc:"முழுமையான வாராந்திர நிகழ்ச்சி அட்டவணை.",
+
+monday:"திங்கட்கிழமை",
+tuesday:"செவ்வாய்க்கிழமை",
+wednesday:"புதன்கிழமை",
+thursday:"வியாழக்கிழமை",
+friday:"வெள்ளிக்கிழமை",
+saturday:"சனிக்கிழமை",
+sunday:"ஞாயிற்றுக்கிழமை",
+
+science:"விஞ்ஞானம்",
+maths:"கணிதம்",
+commerce:"வணிகம்",
+english:"ஆங்கிலம்",
+specialSession:"சிறப்பு அமர்வு",
+mathsRevision:"கணித மீளாய்வு",
+history:"வரலாறு",
+sinhala:"சிங்களம்",
+ict:"ICT",
+mathsPaper:"கணித வினாத்தாள் கலந்துரையாடல்",
+
+contactTitle:"தொடர்பு & தகவல்",
+contactDesc:"நிகழ்ச்சி தகவல் மற்றும் கல்வி ஆதரவுக்காக.",
+contactEducation:"கல்வி",
+contactEducationText:"Hameed Al Hussainie Collage OBA O/L கருத்தரங்க நிகழ்ச்சி.",
+contactSupport:"மாணவர் ஆதரவு",
+contactSupportText:"மாணவர்கள் வாராந்திர நிகழ்ச்சி அட்டவணையைப் பின்பற்றி தொடர்புடைய பாட அமர்வுகளில் கலந்துகொள்ளலாம்.",
+
+footerText:"© 2026 H.A.H.C. OBA | O/L Seminar Programme"
+
+},
+
+
+en: {
+
+navHome:"Home",
+navAbout:"About",
+navFeatures:"Features",
+navTeachers:"Teachers",
+navGallery:"Gallery",
+navOBA:"OBA Members",
+navSchedule:"Schedule",
+navContact:"Contact",
+
+heroKicker:"HAMEED AL HUSSAINIE COLLAGE",
+
+heroText:"A special O/L Seminar Programme organised with dedication, knowledge and unity for the next generation.",
+
+heroButton:"View Programme",
+
+statDays:"Days",
+statSubjects:"Subjects",
+statLanguages:"Mediums",
+
+aboutTitle:"About The Programme",
+aboutDesc:"Building confidence, knowledge and examination readiness.",
+
+aboutText:"The H.A.H.C. OBA O/L Seminar Programme is designed to support students through focused subject sessions, revision and paper discussions conducted by dedicated teachers.",
+
+featuresTitle:"Programme Features",
+featuresDesc:"Everything is arranged to make the learning experience focused, useful and effective.",
+
+feature1Title:"Subject Focus",
+feature1Text:"Dedicated sessions for important O/L subjects.",
+
+feature2Title:"Experienced Teachers",
+feature2Text:"Learn through guidance from dedicated teachers.",
+
+feature3Title:"Revision & Papers",
+feature3Text:"Revision sessions and paper discussions to improve examination confidence.",
+
+teachersTitle:"Our Teachers",
+teachersDesc:"Dedicated educators supporting students throughout the programme.",
+
+sinhalaMedium:"Sinhala Medium",
+sinhalaMediumDesc:"Sinhala Medium Teachers",
+
+tamilMedium:"Tamil Medium",
+tamilMediumDesc:"Tamil Medium Teachers",
+
+qualificationLabel:"Qualification",
+subjectLabel:"Subject",
+
+teacher1Qualification:"Later",
+teacher1Subject:"MATHS",
+
+teacher2Qualification:"Later",
+teacher2Subject:"SCIENCE",
+
+swipeHint:"Swipe to explore teachers",
+
+galleryTitle:"Our Learning Moments",
+galleryDesc:"Moments from our students, classes and seminar programme.",
+
+obaTitle:"Osaka OBA Members",
+obaDesc:"Dedicated members supporting the OBA and the seminar programme.",
+
+obaPost:"OBA Committee Member",
+obaMemberDesc:"Supporting educational activities and helping to organise meaningful programmes for students.",
+
+scheduleTitle:"Seminar Schedule",
+scheduleDesc:"Complete weekly programme schedule.",
+
+monday:"Monday",
+tuesday:"Tuesday",
+wednesday:"Wednesday",
+thursday:"Thursday",
+friday:"Friday",
+saturday:"Saturday",
+sunday:"Sunday",
+
+science:"Science",
+maths:"Maths",
+commerce:"Commerce",
+english:"English",
+specialSession:"Special Session",
+mathsRevision:"Maths Revision",
+history:"History",
+sinhala:"Sinhala",
+ict:"ICT",
+mathsPaper:"Maths Paper Discussion",
+
+contactTitle:"Contact & Information",
+contactDesc:"For programme information and educational support.",
+contactEducation:"Education",
+contactEducationText:"Hameed Al Hussainie Collage OBA O/L Seminar Programme.",
+contactSupport:"Student Support",
+contactSupportText:"Students can follow the weekly programme and attend the relevant subject sessions.",
+
+footerText:"© 2026 H.A.H.C. OBA | O/L Seminar Programme"
+
+}
+
+};
+
+
+/* ================= MENU ================= */
+
+const sideMenu =
+document.getElementById("sideMenu");
+
+const menuOverlay =
+document.getElementById("menuOverlay");
+
+const menuButton =
+document.getElementById("menuButton");
+
+
+function toggleMenu(){
+
+    const isOpen =
+        sideMenu.classList.contains("show");
+
+    if(isOpen){
+
+        closeMenu();
+
+    }else{
+
+        sideMenu.classList.add("show");
+
+        menuOverlay.classList.add("show");
+
+        menuButton.classList.add("active");
+
+        menuButton.innerHTML = "×";
+
+    }
+
+}
+
+
+function closeMenu(){
+
+    sideMenu.classList.remove("show");
+
+    menuOverlay.classList.remove("show");
+
+    menuButton.classList.remove("active");
+
+    menuButton.innerHTML = "☰";
+
+}
+
+
+/* ================= LANGUAGE ================= */
+
+const langButtons =
+document.querySelectorAll(
+    ".language-switcher button"
+);
+
+const i18nElements =
+document.querySelectorAll(
+    "[data-i18n]"
+);
+
+
+function setLanguage(lang){
+
+    const data =
+        translations[lang];
+
+    if(!data) return;
+
+    i18nElements.forEach(element=>{
+
+        const key =
+            element.dataset.i18n;
+
+        if(data[key]){
+
+            element.textContent =
+                data[key];
+
+        }
+
+    });
+
+    langButtons.forEach(button=>{
+
+        button.classList.toggle(
+            "active",
+            button.dataset.lang === lang
+        );
+
+    });
+
+    document.documentElement.lang =
+        lang;
+
+    localStorage.setItem(
+        "hahcLanguage",
+        lang
+    );
+
+}
+
+
+langButtons.forEach(button=>{
+
+    button.addEventListener(
+        "click",
+        ()=>{
+
+            setLanguage(
+                button.dataset.lang
+            );
+
+            closeMenu();
+
+        }
+    );
+
+});
+
+
+const savedLanguage =
+localStorage.getItem(
+    "hahcLanguage"
+) || "en";
+
+setLanguage(savedLanguage);
+
+
+/* ================= ESC ================= */
+
+document.addEventListener(
+    "keydown",
+    event=>{
+
+        if(event.key === "Escape"){
+
+            closeMenu();
+            closePhoto();
+
+        }
+
+    }
+);
+
+
+/* ================= TEACHER CAROUSELS ================= */
+
+const teacherData = {
+
+    sinhala:{
+        track:
+            document.getElementById(
+                "sinhalaTrack"
+            ),
+        index:0,
+        timer:null
     },
 
-
-    ta: {
-
-        navHome:"முகப்பு",
-        navAbout:"எங்களைப் பற்றி",
-        navFeatures:"சிறப்பம்சங்கள்",
-        navTeachers:"ஆசிரியர்கள்",
-        navSchedule:"நேர அட்டவணை",
-        navContact:"தொடர்பு",
-
-        heroKicker:"H.A.H.C. OBA",
-        heroText:"G.C.E. O/L பரீட்சைக்கான உங்கள் கல்விப் பயணத்தை மேலும் வலுப்படுத்த எங்களுடன் இணைந்துகொள்ளுங்கள்.",
-        heroButton:"நேர அட்டவணையைப் பார்க்க",
-
-        statDays:"வார நாட்கள்",
-        statSubjects:"பாடங்கள்",
-        statLanguages:"மொழி ஊடகங்கள்",
-
-        aboutTitle:"எங்களைப் பற்றி",
-        aboutDesc:"H.A.H.C. OBA O/L Seminar Programme",
-        aboutText:"O/L மாணவர்களின் கல்வி அறிவு, பரீட்சைத் தயாரிப்பு மற்றும் பாடப் புரிதலை மேம்படுத்த ஏற்பாடு செய்யப்பட்ட சிறப்பு கருத்தரங்க நிகழ்ச்சியாகும்.",
-
-        featuresTitle:"சிறப்பம்சங்கள்",
-        featuresDesc:"உங்கள் O/L தயாரிப்புக்கான முக்கிய வசதிகள்",
-
-        feature1Title:"பாட உள்ளடக்கம்",
-        feature1Text:"முக்கிய பாடங்களுக்கான திட்டமிடப்பட்ட கல்வி அமர்வுகள்.",
-
-        feature2Title:"ஆசிரியர்கள்",
-        feature2Text:"பரீட்சைக்குத் தேவையான அறிவையும் வழிகாட்டுதலையும் வழங்கும் ஆசிரியர்கள்.",
-
-        feature3Title:"பரீட்சைத் தயாரிப்பு",
-        feature3Text:"Revision மற்றும் Paper Discussion மூலம் பரீட்சைத் தயாரிப்பை வலுப்படுத்துதல்.",
-
-        teachersTitle:"எங்கள் ஆசிரியர்கள்",
-        teachersDesc:"உங்கள் O/L கல்விப் பயணத்திற்கு வழிகாட்டும் ஆசிரியர்கள்",
-
-        sinhalaMedium:"சிங்கள மொழி ஆசிரியர்கள்",
-        sinhalaMediumDesc:"சிங்கள மொழி ஊடகம்",
-
-        tamilMedium:"தமிழ் மொழி ஆசிரியர்கள்",
-        tamilMediumDesc:"தமிழ் மொழி ஆசிரியர்களின் விபரங்கள் விரைவில் சேர்க்கப்படும்.",
-
-        qualificationLabel:"தகுதி",
-        subjectLabel:"பாடம்",
-
-        teacher1Qualification:"பின்னர்",
-        teacher1Subject:"கணிதம்",
-
-        teacher2Qualification:"பின்னர்",
-        teacher2Subject:"விஞ்ஞானம்",
-
-        teacher3Qualification:"பின்னர்",
-        teacher3Subject:"வணிகம்",
-
-        teacher4Qualification:"பின்னர்",
-        teacher4Subject:"வரலாறு",
-
-        teacher5Qualification:"பின்னர்",
-        teacher5Subject:"ஆங்கிலம்",
-
-        teacher6Qualification:"பின்னர்",
-        teacher6Subject:"ICT",
-
-        swipeHint:"ஆசிரியர்களைப் பார்க்க Swipe செய்யவும்",
-
-        scheduleTitle:"கருத்தரங்க நேர அட்டவணை",
-        scheduleDesc:"வாரம் முழுவதும் நடைபெறும் பாட அமர்வுகள்",
-
-        monday:"திங்கட்கிழமை",
-        tuesday:"செவ்வாய்க்கிழமை",
-        wednesday:"புதன்கிழமை",
-        thursday:"வியாழக்கிழமை",
-        friday:"வெள்ளிக்கிழமை",
-        saturday:"சனிக்கிழமை",
-        sunday:"ஞாயிற்றுக்கிழமை",
-
-        science:"விஞ்ஞானம்",
-        maths:"கணிதம்",
-        commerce:"வணிகம்",
-        english:"ஆங்கிலம்",
-        specialSession:"சிறப்பு அமர்வு",
-        mathsRevision:"கணித மீளாய்வு",
-        history:"வரலாறு",
-        sinhala:"சிங்களம்",
-        ict:"ICT",
-        mathsPaper:"கணித வினாத்தாள் கலந்துரையாடல்",
-
-        contactTitle:"தொடர்பு கொள்ளுங்கள்",
-        contactDesc:"நிகழ்ச்சி தொடர்பான மேலதிக தகவல்களுக்கு",
-
-        contactEducation:"கல்வி",
-        contactEducationText:"Hameed Al Hussainie Collage",
-
-        contactSupport:"ஆதரவு",
-        contactSupportText:"H.A.H.C. OBA",
-
-        footerText:"© 2026 H.A.H.C. OBA | O/L Seminar Programme"
-    },
-
-
-    en: {
-
-        navHome:"Home",
-        navAbout:"About",
-        navFeatures:"Features",
-        navTeachers:"Teachers",
-        navSchedule:"Schedule",
-        navContact:"Contact",
-
-        heroKicker:"H.A.H.C. OBA",
-        heroText:"Join us to make your academic journey stronger and prepare confidently for the G.C.E. O/L examination.",
-        heroButton:"View Schedule",
-
-        statDays:"Days",
-        statSubjects:"Subjects",
-        statLanguages:"Mediums",
-
-        aboutTitle:"About Us",
-        aboutDesc:"H.A.H.C. OBA O/L Seminar Programme",
-        aboutText:"A special seminar programme organized to improve O/L students' academic knowledge, examination preparation and subject understanding.",
-
-        featuresTitle:"Features",
-        featuresDesc:"Important facilities for your O/L preparation",
-
-        feature1Title:"Subject Coverage",
-        feature1Text:"Planned study sessions for the main subjects.",
-
-        feature2Title:"Experienced Teachers",
-        feature2Text:"Teachers providing the knowledge and guidance required for the examination.",
-
-        feature3Title:"Exam Preparation",
-        feature3Text:"Strengthen your exam preparation through revision and paper discussions.",
-
-        teachersTitle:"Our Teachers",
-        teachersDesc:"Teachers guiding you throughout your O/L academic journey",
-
-        sinhalaMedium:"Sinhala Medium Teachers",
-        sinhalaMediumDesc:"Sinhala Medium",
-
-        tamilMedium:"Tamil Medium Teachers",
-        tamilMediumDesc:"Tamil Medium teacher details will be added soon.",
-
-        qualificationLabel:"Qualification",
-        subjectLabel:"Subject",
-
-        teacher1Qualification:"Later",
-        teacher1Subject:"MATHS",
-
-        teacher2Qualification:"Later",
-        teacher2Subject:"SCIENCE",
-
-        teacher3Qualification:"Later",
-        teacher3Subject:"COMMERCE",
-
-        teacher4Qualification:"Later",
-        teacher4Subject:"HISTORY",
-
-        teacher5Qualification:"Later",
-        teacher5Subject:"ENGLISH",
-
-        teacher6Qualification:"Later",
-        teacher6Subject:"ICT",
-
-        swipeHint:"Swipe to explore teachers",
-
-        scheduleTitle:"Seminar Schedule",
-        scheduleDesc:"Subject sessions throughout the week",
-
-        monday:"Monday",
-        tuesday:"Tuesday",
-        wednesday:"Wednesday",
-        thursday:"Thursday",
-        friday:"Friday",
-        saturday:"Saturday",
-        sunday:"Sunday",
-
-        science:"Science",
-        maths:"Maths",
-        commerce:"Commerce",
-        english:"English",
-        specialSession:"Special Session",
-        mathsRevision:"Maths Revision",
-        history:"History",
-        sinhala:"Sinhala",
-        ict:"ICT",
-        mathsPaper:"Maths Paper Discussion",
-
-        contactTitle:"Contact",
-        contactDesc:"For more information about the programme",
-
-        contactEducation:"Education",
-        contactEducationText:"Hameed Al Hussainie Collage",
-
-        contactSupport:"Support",
-        contactSupportText:"H.A.H.C. OBA",
-
-        footerText:"© 2026 H.A.H.C. OBA | O/L Seminar Programme"
+    tamil:{
+        track:
+            document.getElementById(
+                "tamilTrack"
+            ),
+        index:0,
+        timer:null
     }
 
 };
 
 
-/* =========================
-   LANGUAGE SWITCHER
-========================= */
+Object.keys(teacherData).forEach(type=>{
 
-function setLanguage(language){
+    const data =
+        teacherData[type];
 
-    document.documentElement.lang = language;
+    data.cards =
+        [
+            ...data.track.querySelectorAll(
+                ".teacher-card"
+            )
+        ];
 
-    document.querySelectorAll("[data-i18n]").forEach(element => {
+});
 
-        const key = element.getAttribute("data-i18n");
 
-        if(translations[language] && translations[language][key]){
-            element.textContent = translations[language][key];
-        }
+function moveTeachers(
+    type,
+    direction
+){
 
-    });
+    const data =
+        teacherData[type];
 
-    document.querySelectorAll(".language-box button").forEach(button=>{
-        button.classList.remove("active");
-    });
+    data.index += direction;
 
-    const activeButton = document.getElementById("lang-" + language);
+    if(data.index < 0){
 
-    if(activeButton){
-        activeButton.classList.add("active");
+        data.index =
+            data.cards.length - 1;
+
     }
 
-    localStorage.setItem("preferredLanguage",language);
-}
+    if(
+        data.index >=
+        data.cards.length
+    ){
 
+        data.index = 0;
 
-/* =========================
-   TEACHER CAROUSEL
-========================= */
-
-const teacherTrack = document.getElementById("teacherTrack");
-
-const teacherCards = [
-    ...teacherTrack.querySelectorAll(".teacher-card")
-];
-
-let teacherIndex = 0;
-
-let autoTeacherTimer;
-
-
-function moveTeachers(direction){
-
-    teacherIndex += direction;
-
-    if(teacherIndex < 0){
-        teacherIndex = teacherCards.length - 1;
     }
 
-    if(teacherIndex >= teacherCards.length){
-        teacherIndex = 0;
-    }
+    const card =
+        data.cards[data.index];
 
-    const card = teacherCards[teacherIndex];
-
-    teacherTrack.scrollTo({
+    data.track.scrollTo({
 
         left:
             card.offsetLeft -
-            teacherTrack.clientWidth / 2 +
+            data.track.clientWidth / 2 +
             card.clientWidth / 2,
 
         behavior:"smooth"
 
     });
 
-    updateTeacherActive();
+    updateTeacherActive(type);
+
 }
 
 
-function updateTeacherActive(){
+function updateTeacherActive(type){
+
+    const data =
+        teacherData[type];
 
     const center =
-        teacherTrack.scrollLeft +
-        teacherTrack.clientWidth / 2;
+        data.track.scrollLeft +
+        data.track.clientWidth / 2;
 
     let closest = 0;
 
     let distance = Infinity;
 
-    teacherCards.forEach((card,index)=>{
+    data.cards.forEach(
+        (card,index)=>{
 
-        const cardCenter =
-            card.offsetLeft +
-            card.clientWidth / 2;
+            const cardCenter =
+                card.offsetLeft +
+                card.clientWidth / 2;
 
-        const currentDistance =
-            Math.abs(center - cardCenter);
+            const currentDistance =
+                Math.abs(
+                    center -
+                    cardCenter
+                );
 
-        if(currentDistance < distance){
+            if(
+                currentDistance <
+                distance
+            ){
 
-            distance = currentDistance;
-            closest = index;
+                distance =
+                    currentDistance;
+
+                closest =
+                    index;
+
+            }
 
         }
-
-    });
-
-    teacherIndex = closest;
-
-    teacherCards.forEach((card,index)=>{
-
-        card.classList.toggle(
-            "is-active",
-            index === closest
-        );
-
-    });
-
-}
-
-
-/* AUTO SLIDE */
-
-function startTeacherAuto(){
-
-    clearInterval(autoTeacherTimer);
-
-    autoTeacherTimer = setInterval(()=>{
-
-        moveTeachers(1);
-
-    },4500);
-
-}
-
-startTeacherAuto();
-
-
-/* UPDATE ACTIVE CARD ON SCROLL */
-
-teacherTrack.addEventListener(
-    "scroll",
-    updateTeacherActive,
-    {passive:true}
-);
-
-
-/* PAUSE ON TOUCH */
-
-teacherTrack.addEventListener(
-    "touchstart",
-    ()=>{
-        clearInterval(autoTeacherTimer);
-    },
-    {passive:true}
-);
-
-teacherTrack.addEventListener(
-    "touchend",
-    ()=>{
-        startTeacherAuto();
-    },
-    {passive:true}
-);
-
-
-/* PAUSE ON MOUSE */
-
-teacherTrack.addEventListener(
-    "mouseenter",
-    ()=>{
-        clearInterval(autoTeacherTimer);
-    }
-);
-
-teacherTrack.addEventListener(
-    "mouseleave",
-    ()=>{
-        startTeacherAuto();
-    }
-);
-
-
-/* =========================
-   REVEAL ANIMATION
-========================= */
-
-const revealObserver =
-    new IntersectionObserver(
-
-        entries => {
-
-            entries.forEach(entry => {
-
-                if(entry.isIntersecting){
-
-                    entry.target.classList.add("show");
-
-                }
-
-            });
-
-        },
-
-        {
-            threshold:.12
-        }
-
     );
 
+    data.index =
+        closest;
 
-document
-    .querySelectorAll(".reveal")
-    .forEach(element => {
+    data.cards.forEach(
+        (card,index)=>{
 
-        revealObserver.observe(element);
+            card.classList.toggle(
+                "is-active",
+                index === closest
+            );
 
-    });
+        }
+    );
+
+}
 
 
-/* =========================
-   LOAD SAVED LANGUAGE
-========================= */
+function startTeacherAuto(type){
 
-const savedLanguage =
-    localStorage.getItem("preferredLanguage") || "si";
+    const data =
+        teacherData[type];
 
-setLanguage(savedLanguage);
+    clearInterval(
+        data.timer
+    );
+
+    data.timer =
+        setInterval(()=>{
+
+            moveTeachers(
+                type,
+                1
+            );
+
+        },4500);
+
+}
+
+
+Object.keys(teacherData).forEach(type=>{
+
+    const data =
+        teacherData[type];
+
+    data.track.addEventListener(
+        "scroll",
+        ()=>updateTeacherActive(type)
+    );
+
+    data.track.addEventListener(
+        "mouseenter",
+        ()=>{
+            clearInterval(data.timer);
+        }
+    );
+
+    data.track.addEventListener(
+        "mouseleave",
+        ()=>{
+            startTeacherAuto(type);
+        }
+    );
+
+    data.track.addEventListener(
+        "touchstart",
+        ()=>{
+            clearInterval(data.timer);
+        },
+        {passive:true}
+    );
+
+    data.track.addEventListener(
+        "touchend",
+        ()=>{
+            startTeacherAuto(type);
+        },
+        {passive:true}
+    );
+
+    startTeacherAuto(type);
+
+});
+
+
+/* ================= PHOTO VIEWER ================= */
+
+const photoViewer =
+document.getElementById(
+    "photoViewer"
+);
+
+const viewerImage =
+document.getElementById(
+    "viewerImage"
+);
+
+
+function openPhoto(src){
+
+    viewerImage.src =
+        src;
+
+    photoViewer.classList.add(
+        "show"
+    );
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+function closePhoto(event){
+
+    if(
+        event &&
+        event.target !== photoViewer
+    ){
+
+        return;
+
+    }
+
+    photoViewer.classList.remove(
+        "show"
+    );
+
+    document.body.style.overflow =
+        "";
+
+}
+
+
+/* ================= REVEAL ================= */
+
+const revealElements =
+document.querySelectorAll(
+    ".reveal"
+);
+
+const observer =
+new IntersectionObserver(
+
+    entries=>{
+
+        entries.forEach(entry=>{
+
+            if(
+                entry.isIntersecting
+            ){
+
+                entry.target.classList.add(
+                    "show"
+                );
+
+            }
+
+        });
+
+    },
+
+    {
+        threshold:.12
+    }
+
+);
+
+
+revealElements.forEach(
+    element=>{
+
+        observer.observe(
+            element
+        );
+
+    }
+);
 
 </script>
 
 </body>
-</html>
+            </html>
