@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>H.A.H.C. OBA | O/L CLASSES</title>
 
+<!-- Favicon & Shortcut Icons -->
+<link rel="icon" type="image/png" href="images/osaka-oba-logo.png">
+<link rel="apple-touch-icon" href="images/osaka-oba-logo.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -144,47 +148,47 @@ header{
 }
 
 .floating-lang-bar{
-    position:fixed;
-    top:74px;
-    right:16px;
-    z-index:9990;
-    display:flex;
-    align-items:center;
-    gap:5px;
-    padding:4px 6px;
-    background:rgba(40,0,18,0.85);
-    backdrop-filter:blur(15px);
-    border:1px solid rgba(255,215,100,.35);
-    border-radius:30px;
-    box-shadow:0 8px 25px rgba(0,0,0,0.4);
+    position: fixed;
+    top: 80px;
+    right: 18px;
+    z-index: 9990;
+    display: flex;
+    align-items: center;
+    padding: 4px 6px;
+    background: rgba(35, 0, 16, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 215, 100, 0.35);
+    border-radius: 30px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.45);
 }
 
 .language-switcher{
-    display:flex;
-    gap:4px;
+    display: flex;
+    gap: 4px;
 }
 
 .language-switcher button{
-    border:1px solid rgba(255,215,100,.25);
-    background:rgba(255,255,255,.06);
-    color:#fff;
-    padding:6px 11px;
-    border-radius:20px;
-    cursor:pointer;
-    font-family:Georgia,serif;
-    font-size:11px;
-    font-weight:600;
-    transition:.3s ease;
+    border: 1px solid rgba(255, 215, 100, 0.25);
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.85);
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: var(--font-main);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
 }
 
 .language-switcher button:hover,
 .language-switcher button.active{
-    background:linear-gradient(135deg,#ffd76b,#b47a00);
-    color:#3d0019;
-    border-color:#ffd76b;
-    box-shadow:0 0 10px rgba(255,215,100,.4);
+    background: linear-gradient(135deg, var(--gold), #d4930e);
+    color: #2b0012;
+    border-color: var(--gold);
+    box-shadow: 0 0 12px rgba(255, 215, 100, 0.4);
 }
-
 
 .menu-overlay{
     position: fixed;
